@@ -1,0 +1,762 @@
+/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+:root {
+  --bg-900: #05080f;
+  --bg-800: #0b1222;
+  --bg-700: #111c34;
+  --text-100: #f8fafc;
+  --text-300: #cbd5e1;
+  --text-400: #94a3b8;
+  --accent-500: #3b82ff;
+  --accent-400: #60a5fa;
+  --brand-orange: #fb923c;
+  --brand-orange-soft: #fdba74;
+  --card-border: rgb(147 197 253 / 22%);
+  --card-bg: rgb(8 17 34 / 72%);
+  --shadow-soft: 0 12px 30px rgb(2 6 23 / 35%);
+  --shadow-strong: 0 24px 55px rgb(2 6 23 / 42%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.55;
+  background:
+    radial-gradient(circle at 12% 14%, rgb(37 99 235 / 24%) 0%, transparent 28%),
+    radial-gradient(circle at 88% 82%, rgb(30 64 175 / 20%) 0%, transparent 26%),
+    var(--bg-900);
+  color: var(--text-100);
+}
+
+body.intro-active {
+  overflow: hidden;
+}
+
+main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.hero__video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 40;
+  transform-origin: center center;
+  box-shadow: 0 24px 60px rgb(2 6 23 / 45%);
+  animation: intro-video-close 4.8s ease-in-out forwards;
+}
+
+.hero__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgb(3 8 20 / 55%) 0%, rgb(2 6 23 / 82%) 68%, rgb(2 6 23 / 92%) 100%),
+    radial-gradient(circle at 50% 20%, rgb(59 130 246 / 18%) 0%, transparent 44%),
+    radial-gradient(circle at 82% 24%, rgb(249 115 22 / 16%) 0%, transparent 28%);
+  animation: intro-overlay-out 4.8s ease-in-out forwards;
+}
+
+@keyframes intro-video-close {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  60% {
+    transform: scale(0.28);
+    opacity: 1;
+    border-radius: 16px;
+  }
+
+  85% {
+    transform: scale(0.1);
+    opacity: 0.75;
+    border-radius: 22px;
+  }
+
+  100% {
+    transform: scale(0.02);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@keyframes intro-overlay-out {
+  0% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  width: min(92vw, 860px);
+  padding: clamp(1.3rem, 3vw, 2rem);
+  border: 1px solid rgb(148 163 184 / 22%);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgb(15 23 42 / 28%) 0%, rgb(15 23 42 / 48%) 100%);
+  backdrop-filter: blur(5px);
+  box-shadow: var(--shadow-strong);
+}
+
+.hero__tag {
+  margin: 0 0 0.5rem;
+  color: var(--brand-orange-soft);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.hero__content h1 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2.2rem, 7vw, 5rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: 0 12px 30px rgb(2 6 23 / 45%);
+}
+
+.hero__subtitle {
+  margin: 0 auto;
+  max-width: 700px;
+  color: var(--text-300);
+  font-size: clamp(1rem, 2.1vw, 1.35rem);
+  line-height: 1.5;
+}
+
+.hero__button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #1d4ed8 0%, #3b82ff 55%, #f97316 100%);
+  color: #fff;
+  padding: 0.88rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgb(37 99 235 / 35%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.hero__button:hover,
+.hero__button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgb(249 115 22 / 35%);
+  filter: brightness(1.05);
+}
+
+.section__eyebrow {
+  color: var(--brand-orange-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.section {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+  position: relative;
+}
+
+.section--contact {
+  padding-top: 1rem;
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+.container {
+  width: min(92vw, 1100px);
+  margin: 0 auto;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  margin-bottom: 2.2rem;
+  letter-spacing: 0.02em;
+}
+
+.container h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 0.7rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-400) 35%, var(--brand-orange) 65%, transparent 100%);
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.about__intro,
+.about__stats {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  padding: 1.3rem;
+}
+
+.about__intro h2 {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.about__intro h2::after {
+  margin-left: 0;
+}
+
+.about__intro p + p {
+  margin-top: 0.75rem;
+}
+
+.about__stats {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.about__pill {
+  border: 1px solid rgb(249 115 22 / 24%);
+  border-radius: 12px;
+  padding: 0.75rem 0.8rem;
+  background: linear-gradient(90deg, rgb(30 58 138 / 25%) 0%, rgb(249 115 22 / 10%) 100%);
+}
+
+.about__pill strong {
+  display: block;
+  color: #fde68a;
+  margin-bottom: 0.2rem;
+}
+
+.about__pill span {
+  color: var(--text-300);
+  font-size: 0.93rem;
+}
+
+.services-grid,
+.steps-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.services-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.steps-grid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.card,
+.step,
+.contact-form {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.card {
+  padding: 1.15rem;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  border-color: rgb(96 165 250 / 45%);
+  box-shadow: var(--shadow-strong);
+}
+
+.card__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(150deg, rgb(59 130 246 / 28%) 0%, rgb(249 115 22 / 20%) 100%);
+  box-shadow: inset 0 0 0 1px rgb(147 197 253 / 26%);
+}
+
+.card__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: #93c5fd;
+}
+
+.card h3 {
+  margin-bottom: 0.45rem;
+  font-size: 1.1rem;
+}
+
+.card p,
+.step p {
+  color: var(--text-300);
+  line-height: 1.5;
+}
+
+.step {
+  padding: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: transform 0.22s ease, border-color 0.22s ease;
+}
+
+.step:hover {
+  transform: translateY(-2px);
+  border-color: rgb(96 165 250 / 42%);
+}
+
+.step span {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: linear-gradient(140deg, rgb(59 130 246 / 26%) 0%, rgb(249 115 22 / 24%) 100%);
+  color: #bfdbfe;
+  font-weight: 700;
+}
+
+.container--narrow {
+  width: min(92vw, 720px);
+}
+
+.contact-form {
+  padding: 1.25rem;
+  backdrop-filter: blur(4px);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.form__field {
+  margin-bottom: 0;
+}
+
+.form__field--full {
+  grid-column: 1 / -1;
+}
+
+.form__field label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-weight: 600;
+  font-size: 0.93rem;
+  color: var(--text-300);
+}
+
+.form__field input,
+.form__field select,
+.form__field textarea {
+  width: 100%;
+  border: 1px solid rgb(148 163 184 / 30%);
+  border-radius: 10px;
+  background-color: rgb(15 23 42 / 74%);
+  color: #e2e8f0;
+  font-size: 0.98rem;
+  padding: 0.75rem 0.85rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form__field input::placeholder,
+.form__field textarea::placeholder {
+  color: var(--text-400);
+}
+
+.form__field textarea {
+  min-height: 110px;
+}
+
+.form__field input:focus-visible,
+.form__field select:focus-visible,
+.form__field textarea:focus-visible {
+  outline: none;
+  border-color: var(--brand-orange);
+  background-color: rgb(15 23 42 / 90%);
+  box-shadow: 0 0 0 3px rgb(249 115 22 / 23%);
+}
+
+.contact-form .hero__button {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.65rem;
+}
+
+.form__feedback {
+  margin: 0.9rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgb(251 146 60 / 45%);
+  background-color: rgb(249 115 22 / 18%);
+  color: #ffedd5;
+  font-size: 0.94rem;
+  line-height: 1.4;
+}
+
+.footer {
+  border-top: 1px solid rgb(148 163 184 / 15%);
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-400);
+  font-size: 0.9rem;
+  background: rgb(2 6 23 / 45%);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__video,
+  .hero__button,
+  .form__field input,
+  .form__field select,
+  .form__field textarea,
+  .reveal {
+    transition: none;
+    animation: none;
+  }
+
+  .hero__video,
+  .hero__overlay {
+    display: none;
+  }
+
+  body.intro-active {
+    overflow: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media only screen and (max-width: 40em) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__content {
+    border-radius: 18px;
+  }
+
+  .hero__content h1 {
+    letter-spacing: 0.04em;
+  }
+
+  .contact-form {
+    padding: 1rem;
+  }
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+/*
+ * Extends the .visually-hidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * The use of `table` rather than `block` is only necessary if using
+ * `::before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
