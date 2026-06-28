@@ -1354,12 +1354,13 @@ p {
   .hero__content {
     padding: var(--space-5);
     border-radius: var(--radius-xl);
-    max-width: 100%;
+    width: calc(100% - var(--space-4) * 2);
+    margin: 0 auto;
   }
 
   .hero__logo {
     width: min(320px, 65vw);
-    margin-bottom: var(--space-4);
+    margin: 0 auto var(--space-4);
   }
 
   .hero__tag {
@@ -1370,6 +1371,10 @@ p {
 
   .hero__subtitle {
     margin-bottom: var(--space-5);
+  }
+
+  .hero__button {
+    margin: 0 auto;
   }
 }
 
