@@ -1,13 +1,12 @@
 /* ============================================
-   Code Repair Tech — MAX JUICE
-   - Loader
-   - Custom cursor + label
-   - Three.js 3D scroll scene (hero wireframe + particles)
-   - Three.js services sticky scene (orbiting rings + icons)
-   - Scroll-driven 3D parallax
+   Code Repair Tech — EXOTIC ELECTRIC EDITION
+   - Electric Orange & Blue plasma core
+   - Multi-layer wireframe icosahedrons
+   - Particle vortex with color mixing
+   - Aurora borealis background
+   - Custom cursor with neon glow
    - Magnetic buttons, tilt cards
    - Sticky process stack with scroll progress
-   - Marquee, reveal, counters, nav, form
    ============================================ */
 
 import * as THREE from 'three';
