@@ -17,6 +17,7 @@ import * as THREE from 'three';
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouch = window.matchMedia('(hover: none)').matches;
   const isMobile = window.innerWidth < 768;
+  const isTablet = window.innerWidth < 1024;
 
   /* ============================================
      LOADER
@@ -35,10 +36,10 @@ import * as THREE from 'three';
   };
 
   /* ============================================
-     CUSTOM CURSOR + LABEL
+     CUSTOM CURSOR + LABEL (Desktop only)
      ============================================ */
   const initCursor = () => {
-    if (isTouch) return;
+    if (isTouch || isMobile) return;
     const cursor = document.getElementById('cursor');
     if (!cursor) return;
     const ring = cursor.querySelector('.cursor__ring');
@@ -70,166 +71,71 @@ import * as THREE from 'three';
   };
 
   /* ============================================
-     THREE.JS — HERO 3D SCENE (EXOTIC ELECTRIC)
-     Multi-layer wireframe + plasma core + particle vortex
-     that react to scroll and mouse
+     THREE.JS — HERO 3D SCENE (Modern & Clean)
+     Minimalist wireframe sphere with subtle particles
+     Optimized for mobile performance
      ============================================ */
   const initHero3D = () => {
     const canvas = document.getElementById('webgl-canvas');
     if (!canvas) return;
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
-    camera.position.set(0, 0, 10);
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 8);
 
-    // ELECTRIC PLASMA CORE — glowing orange sphere
-    const coreGeo = new THREE.SphereGeometry(1.2, 32, 32);
-    const coreMat = new THREE.MeshBasicMaterial({
-      color: 0xFF4D00,
-      transparent: true,
-      opacity: 0.9,
-      blending: THREE.AdditiveBlending
-    });
-    const core = new THREE.Mesh(coreGeo, coreMat);
-    scene.add(core);
-
-    // Inner wireframe icosahedron — electric blue
-    const icoGeo = new THREE.IcosahedronGeometry(1.8, 1);
-    const icoMat = new THREE.MeshBasicMaterial({
-      color: 0x00F0FF,
+    // Main wireframe sphere — clean blue
+    const sphereGeo = new THREE.IcosahedronGeometry(2, 2);
+    const sphereMat = new THREE.MeshBasicMaterial({
+      color: 0x00B4D8,
       wireframe: true,
       transparent: true,
-      opacity: 0.7,
-      blending: THREE.AdditiveBlending
+      opacity: 0.3
     });
-    const ico = new THREE.Mesh(icoGeo, icoMat);
-    scene.add(ico);
+    const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+    scene.add(sphere);
 
-    // Middle icosahedron — orange
-    const ico2Geo = new THREE.IcosahedronGeometry(2.4, 0);
-    const ico2Mat = new THREE.MeshBasicMaterial({
-      color: 0xFF4D00,
+    // Inner sphere — orange accent
+    const innerGeo = new THREE.IcosahedronGeometry(1, 1);
+    const innerMat = new THREE.MeshBasicMaterial({
+      color: 0xFF6B35,
       wireframe: true,
       transparent: true,
-      opacity: 0.5,
-      blending: THREE.AdditiveBlending
+      opacity: 0.4
     });
-    const ico2 = new THREE.Mesh(ico2Geo, ico2Mat);
-    scene.add(ico2);
+    const inner = new THREE.Mesh(innerGeo, innerMat);
+    scene.add(inner);
 
-    // Outer icosahedron — purple accent
-    const ico3Geo = new THREE.IcosahedronGeometry(3.0, 0);
-    const ico3Mat = new THREE.MeshBasicMaterial({
-      color: 0x7B00FF,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.35,
-      blending: THREE.AdditiveBlending
-    });
-    const ico3 = new THREE.Mesh(ico3Geo, ico3Mat);
-    scene.add(ico3);
-
-    // ELECTRIC RINGS — 5 rings with different colors
-    const rings = [];
-    const ringColors = [0xFF4D00, 0x00F0FF, 0xFF0066, 0x7B00FF, 0x00F0FF];
-    const ringRadii = [3.5, 4.2, 4.9, 5.6, 6.3];
-
-    ringColors.forEach((color, i) => {
-      const ring = new THREE.Mesh(
-        new THREE.TorusGeometry(ringRadii[i], 0.015 + (4 - i) * 0.005, 12, 100),
-        new THREE.MeshBasicMaterial({
-          color: color,
-          transparent: true,
-          opacity: 0.8 - i * 0.12,
-          blending: THREE.AdditiveBlending
-        })
-      );
-      ring.rotation.x = Math.PI / 2 + (i - 2) * 0.25;
-      ring.rotation.y = i * 0.4;
-      ring.rotation.z = i * 0.3;
-      scene.add(ring);
-      rings.push(ring);
-    });
-
-    // PARTICLE VORTEX — swirling electric particles
-    const particlesCount = 1500;
+    // Subtle particles
+    const particlesCount = isMobile ? 300 : 600;
     const positions = new Float32Array(particlesCount * 3);
-    const colors = new Float32Array(particlesCount * 3);
-    const colorBlue = new THREE.Color(0x00F0FF);
-    const colorOrange = new THREE.Color(0xFF4D00);
-    const colorPurple = new THREE.Color(0x7B00FF);
-
-    for (let i = 0; i < particlesCount; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const radius = 2 + Math.random() * 12;
-      const height = (Math.random() - 0.5) * 8;
-
-      positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = height;
-      positions[i * 3 + 2] = Math.sin(angle) * radius;
-
-      // Mix colors
-      const colorMix = Math.random();
-      let chosenColor;
-      if (colorMix < 0.4) chosenColor = colorBlue;
-      else if (colorMix < 0.7) chosenColor = colorOrange;
-      else chosenColor = colorPurple;
-
-      colors[i * 3] = chosenColor.r;
-      colors[i * 3 + 1] = chosenColor.g;
-      colors[i * 3 + 2] = chosenColor.b;
+    for (let i = 0; i < particlesCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 20;
     }
-
     const particleGeo = new THREE.BufferGeometry();
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
     const particleMat = new THREE.PointsMaterial({
-      size: 0.035,
-      vertexColors: true,
+      color: 0x00B4D8,
+      size: 0.03,
       transparent: true,
-      opacity: 0.8,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
+      opacity: 0.5
     });
     const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
 
-    // GLOW SPRITES — floating orbs
-    const spriteCount = 20;
-    const sprites = [];
-    const spriteColors = [0xFF4D00, 0x00F0FF, 0x7B00FF];
-
-    for (let i = 0; i < spriteCount; i++) {
-      const spriteMat = new THREE.SpriteMaterial({
-        color: spriteColors[Math.floor(Math.random() * spriteColors.length)],
-        transparent: true,
-        opacity: 0.6 + Math.random() * 0.4,
-        blending: THREE.AdditiveBlending
-      });
-      const sprite = new THREE.Sprite(spriteMat);
-      sprite.position.set(
-        (Math.random() - 0.5) * 15,
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10
-      );
-      sprite.scale.set(0.3 + Math.random() * 0.4, 0.3 + Math.random() * 0.4, 1);
-      sprites.push(sprite);
-      scene.add(sprite);
-    }
-
     // Scroll & mouse
-    let scrollY = 0, mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+    let scrollY = 0, mouseX = 0, mouseY = 0;
     window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
-    window.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    }, { passive: true });
+    if (!isMobile) {
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      }, { passive: true });
+    }
 
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -239,61 +145,22 @@ import * as THREE from 'three';
 
     const animate = () => {
       const t = performance.now() * 0.001;
-
-      // Scroll-driven camera dolly + fade
       const scrollProgress = Math.min(1, scrollY / window.innerHeight);
-      camera.position.z = 10 - scrollProgress * 5;
-      camera.position.y = scrollProgress * -2;
-      camera.position.x = scrollProgress * mouseX * 2;
 
-      // Mouse follow with smooth interpolation
-      targetX += (mouseX * 0.5 - targetX) * 0.04;
-      targetY += (-mouseY * 0.5 - targetY) * 0.04;
+      // Subtle rotation
+      sphere.rotation.y = t * 0.05 + mouseX * 0.1;
+      sphere.rotation.x = mouseY * 0.1;
+      inner.rotation.y = -t * 0.08;
+      inner.rotation.x = -t * 0.05;
 
-      // Core pulse
-      const pulse = 1 + Math.sin(t * 3) * 0.08;
-      core.scale.set(pulse, pulse, pulse);
-      core.rotation.y = -t * 0.2;
+      // Particles drift
+      particles.rotation.y = t * 0.02;
 
-      // Icosahedrons rotation
-      ico.rotation.x = targetY * 0.4 + Math.sin(t * 0.5) * 0.1;
-      ico.rotation.y = targetX * 0.4 + t * 0.15;
-      ico.rotation.z = t * 0.05;
-
-      ico2.rotation.x = -targetY * 0.3 + Math.cos(t * 0.4) * 0.15;
-      ico2.rotation.y = -targetX * 0.3 - t * 0.1;
-      ico2.rotation.z = -t * 0.03;
-
-      ico3.rotation.x = targetY * 0.2 + Math.sin(t * 0.3) * 0.2;
-      ico3.rotation.y = -targetX * 0.2 + t * 0.05;
-
-      // Rings animation
-      rings.forEach((ring, i) => {
-        ring.rotation.z += (0.002 + i * 0.001) * (i % 2 ? 1 : -1);
-        ring.rotation.x += Math.sin(t * 0.5 + i) * 0.002;
-      });
-
-      // Particle vortex rotation
-      particles.rotation.y = t * 0.08 + targetX * 0.1;
-      particles.rotation.x = targetY * 0.08;
-
-      // Sprites floating
-      sprites.forEach((sprite, i) => {
-        sprite.position.y += Math.sin(t * 2 + i) * 0.005;
-        sprite.scale.setScalar(0.3 + Math.sin(t * 1.5 + i) * 0.1);
-      });
-
-      // Fade out as you scroll past hero
-      const opacity = 1 - scrollProgress * 1.3;
-      const fade = Math.max(0, opacity);
-      coreMat.opacity = 0.9 * fade;
-      icoMat.opacity = 0.7 * fade;
-      ico2Mat.opacity = 0.5 * fade;
-      ico3Mat.opacity = 0.35 * fade;
-      particleMat.opacity = 0.8 * fade;
-      rings.forEach(ring => {
-        ring.material.opacity = Math.max(0.2, ring.material.opacity - 0.02 * scrollProgress);
-      });
+      // Scroll fade
+      const fade = Math.max(0, 1 - scrollProgress * 1.2);
+      sphereMat.opacity = 0.3 * fade;
+      innerMat.opacity = 0.4 * fade;
+      particleMat.opacity = 0.5 * fade;
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
@@ -302,8 +169,9 @@ import * as THREE from 'three';
   };
 
   /* ============================================
-     THREE.JS — SERVICES STICKY SCENE (EXOTIC)
-     Electric plasma core with orbiting energy rings
+     THREE.JS — SERVICES STICKY SCENE (Modern)
+     Clean orbiting ring with subtle animation
+     Optimized for mobile
      ============================================ */
   const initServices3D = () => {
     const canvas = document.getElementById('scene-canvas');
@@ -311,94 +179,46 @@ import * as THREE from 'three';
     if (!canvas || !stage) return;
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5));
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.set(0, 0, 8);
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 50);
+    camera.position.set(0, 0, 6);
 
-    // GLOWING PLASMA CORE — changes color per service
-    const coreGeo = new THREE.SphereGeometry(0.7, 24, 24);
-    const coreMat = new THREE.MeshBasicMaterial({
-      color: 0xFF4D00,
-      transparent: true,
-      opacity: 0.95,
-      blending: THREE.AdditiveBlending
-    });
-    const plasmaCore = new THREE.Mesh(coreGeo, coreMat);
-    scene.add(plasmaCore);
-
-    // Wireframe icosahedron shell
+    // Central sphere — changes color per service
     const core = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.1, 0),
-      new THREE.MeshBasicMaterial({ color: 0xFF4D00, wireframe: true, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending })
+      new THREE.SphereGeometry(0.6, 16, 16),
+      new THREE.MeshBasicMaterial({ color: 0xFF6B35, transparent: true, opacity: 0.9 })
     );
     scene.add(core);
 
-    // Inner electric core
-    const innerCore = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.5, 0),
-      new THREE.MeshBasicMaterial({ color: 0x00F0FF, wireframe: true, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending })
+    // Wireframe shell
+    const shell = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(1, 0),
+      new THREE.MeshBasicMaterial({ color: 0x00B4D8, wireframe: true, transparent: true, opacity: 0.4 })
     );
-    scene.add(innerCore);
+    scene.add(shell);
 
-    // ELECTRIC RINGS — 4 orbiting rings
-    const rings = [];
-    const ringData = [
-      { radius: 1.8, color: 0xFF4D00, thickness: 0.012 },
-      { radius: 2.3, color: 0x00F0FF, thickness: 0.010 },
-      { radius: 2.8, color: 0xFF0066, thickness: 0.008 },
-      { radius: 3.3, color: 0x7B00FF, thickness: 0.006 }
-    ];
+    // Single orbiting ring
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(1.8, 0.02, 8, 48),
+      new THREE.MeshBasicMaterial({ color: 0x00B4D8, transparent: true, opacity: 0.6 })
+    );
+    ring.rotation.x = Math.PI / 2.5;
+    scene.add(ring);
 
-    ringData.forEach((data, i) => {
-      const ring = new THREE.Mesh(
-        new THREE.TorusGeometry(data.radius, data.thickness, 10, 60),
-        new THREE.MeshBasicMaterial({
-          color: data.color,
-          transparent: true,
-          opacity: 0.85 - i * 0.15,
-          blending: THREE.AdditiveBlending
-        })
-      );
-      ring.rotation.x = Math.PI / 2 + (i - 1.5) * 0.35;
-      ring.rotation.y = i * 0.6;
-      ring.rotation.z = i * 0.3;
-      scene.add(ring);
-      rings.push(ring);
-    });
-
-    // ENERGY PARTICLES — orbiting dots
-    const pCount = 300;
+    // Subtle particles
+    const pCount = isMobile ? 100 : 200;
     const pPos = new Float32Array(pCount * 3);
-    const pColors = new Float32Array(pCount * 3);
-    const colorOrange = new THREE.Color(0xFF4D00);
-    const colorBlue = new THREE.Color(0x00F0FF);
-    const colorPurple = new THREE.Color(0x7B00FF);
-
-    for (let i = 0; i < pCount; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const radius = 1.5 + Math.random() * 3;
-      pPos[i * 3] = Math.cos(angle) * radius;
-      pPos[i * 3 + 1] = (Math.random() - 0.5) * 4;
-      pPos[i * 3 + 2] = Math.sin(angle) * radius;
-
-      const c = Math.random() < 0.4 ? colorBlue : (Math.random() < 0.7 ? colorOrange : colorPurple);
-      pColors[i * 3] = c.r;
-      pColors[i * 3 + 1] = c.g;
-      pColors[i * 3 + 2] = c.b;
+    for (let i = 0; i < pCount * 3; i++) {
+      pPos[i] = (Math.random() - 0.5) * 6;
     }
-
     const pGeo = new THREE.BufferGeometry();
     pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-    pGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
-
     const particles = new THREE.Points(pGeo, new THREE.PointsMaterial({
-      size: 0.04,
-      vertexColors: true,
+      color: 0x00B4D8,
+      size: 0.025,
       transparent: true,
-      opacity: 0.8,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
+      opacity: 0.5
     }));
     scene.add(particles);
 
@@ -417,14 +237,7 @@ import * as THREE from 'three';
     // Scroll-driven color + rotation
     const labelEl = document.getElementById('stageLabel');
     const labels = ['01 · Inventory', '02 · Contable', '03 · Restaurantes', '04 · Automatización'];
-    const colors = [0xFF4D00, 0x00F0FF, 0xFF4D00, 0x00F0FF];
-    const innerColors = [0x00F0FF, 0xFF4D00, 0x00F0FF, 0xFF4D00];
-    const glowColors = [
-      [0xFF4D00, 0x00F0FF],
-      [0x00F0FF, 0xFF4D00],
-      [0xFF4D00, 0x00F0FF],
-      [0x00F0FF, 0xFF4D00]
-    ];
+    const colors = [0xFF6B35, 0x00B4D8, 0xFF6B35, 0x00B4D8];
 
     let activeIndex = -1;
     const updateActive = () => {
@@ -436,85 +249,27 @@ import * as THREE from 'three';
       });
       if (idx !== activeIndex && idx >= 0) {
         activeIndex = idx;
-        // Smooth color transition
-        const targetColor = colors[idx];
-        const targetInner = innerColors[idx];
-
-        // Animate color change
-        const startTime = performance.now();
-        const animateColor = () => {
-          const elapsed = performance.now() - startTime;
-          const progress = Math.min(1, elapsed / 500);
-
-          plasmaCore.material.color.setHex(targetColor);
-          core.material.color.setHex(targetColor);
-          innerCore.material.color.setHex(targetInner);
-
-          if (progress < 1) requestAnimationFrame(animateColor);
-        };
-        animateColor();
-
+        core.material.color.setHex(colors[idx]);
+        shell.material.color.setHex(idx % 2 === 0 ? 0xFF6B35 : 0x00B4D8);
+        ring.material.color.setHex(idx % 2 === 0 ? 0x00B4D8 : 0xFF6B35);
         if (labelEl) {
           labelEl.textContent = labels[idx];
-          labelEl.style.transform = 'scale(0.85)';
-          labelEl.style.opacity = '0.7';
-          requestAnimationFrame(() => {
-            labelEl.style.transition = 'all 0.4s var(--ease-spring)';
-            labelEl.style.transform = 'scale(1)';
-            labelEl.style.opacity = '1';
-          });
         }
       }
     };
 
     const t0 = performance.now();
-    let mouseX = 0, mouseY = 0;
-    stage.addEventListener('mousemove', (e) => {
-      const r = stage.getBoundingClientRect();
-      mouseX = ((e.clientX - r.left) / r.width - 0.5) * 2;
-      mouseY = ((e.clientY - r.top) / r.height - 0.5) * 2;
-    }, { passive: true });
-
     const animate = () => {
       const t = (performance.now() - t0) * 0.001;
       updateActive();
 
-      // Plasma core pulse
-      const plasmaPulse = 1 + Math.sin(t * 3) * 0.08;
-      plasmaCore.scale.setScalar(plasmaPulse);
-      plasmaCore.rotation.y = -t * 0.2;
-
-      // Wireframe core rotation with mouse influence
-      core.rotation.x = t * 0.25 + mouseY * 0.4;
-      core.rotation.y = t * 0.35 + mouseX * 0.4;
-      core.rotation.z = t * 0.1;
-
-      // Inner core counter-rotation
-      innerCore.rotation.x = -t * 0.5;
-      innerCore.rotation.y = -t * 0.6;
-      innerCore.rotation.z = -t * 0.2;
-
-      // Pulsing scale
-      const pulse = 1 + Math.sin(t * 2.5) * 0.06;
-      innerCore.scale.setScalar(pulse);
-      core.scale.setScalar(1 + Math.sin(t * 2) * 0.04);
-
-      // Rings animation — each rotates differently
-      rings.forEach((ring, i) => {
-        ring.rotation.z = t * (0.4 - i * 0.08) * (i % 2 ? 1 : -1);
-        ring.rotation.x += Math.sin(t * 0.8 + i) * 0.003;
-        ring.rotation.y += Math.cos(t * 0.6 + i * 0.5) * 0.002;
-      });
-
-      // Particle vortex
-      particles.rotation.y = t * 0.12;
-      particles.rotation.x = targetY * 0.15;
-      particles.rotation.z = t * 0.03;
-
-      // Subtle camera movement
-      camera.position.x = mouseX * 0.3;
-      camera.position.y = mouseY * 0.3;
-      camera.lookAt(0, 0, 0);
+      // Subtle rotation
+      core.rotation.y = t * 0.2;
+      shell.rotation.x = t * 0.15;
+      shell.rotation.y = t * 0.2;
+      ring.rotation.z = t * 0.1;
+      ring.rotation.x = Math.sin(t * 0.5) * 0.1;
+      particles.rotation.y = t * 0.05;
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
@@ -784,16 +539,20 @@ import * as THREE from 'three';
     initCursor();
     initNav();
     initHero3D();
-    initHeroParallax();
-    initTilt();
-    initMagnetic();
+
+    // Only init parallax on desktop
+    if (!isMobile) {
+      initHeroParallax();
+      initTilt();
+      initMagnetic();
+      requestAnimationFrame(() => setTimeout(initServices3D, 300));
+    }
+
     initReveal();
     initStatBars();
     initBackToTop();
     initForm();
     initProcessStack();
-    // Three.js services scene only on desktop
-    if (!isMobile) requestAnimationFrame(() => setTimeout(initServices3D, 300));
   };
 
   if (document.readyState === 'loading') {
