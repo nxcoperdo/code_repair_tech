@@ -3,21 +3,20 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a0c10">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050714">
   <meta name="color-scheme" content="dark">
-
-  <title>Code Repair Tech | Soluciones de Software Empresarial</title>
-  <meta name="description" content="Code Repair Tech es una empresa de soluciones digitales que identifica problemas de negocio y crea sistemas a medida para resolverlos. Especialistas en inventario, contabilidad y automatización.">
+  <meta name="description" content="Code Repair Tech — Soluciones de software empresarial con tecnología futurista. Sistemas a medida, inventario, contabilidad y automatización.">
   <meta name="keywords" content="software empresarial, sistemas de inventario, automatización, consultoría tecnológica, software contable, desarrollo a medida">
   <meta name="author" content="Code Repair Tech">
+
+  <title>Code Repair Tech | Soluciones de Software Empresarial</title>
 
   <!-- Open Graph -->
   <meta property="og:title" content="Code Repair Tech | Soluciones de Software Empresarial">
   <meta property="og:type" content="website">
   <meta property="og:url" content="">
   <meta property="og:image" content="img/logo_code_con_fond.jpeg">
-  <meta property="og:image:alt" content="Code Repair Tech Logo">
   <meta property="og:description" content="Diagnosticamos procesos, definimos arquitectura y desplegamos soluciones de software empresarial.">
 
   <!-- Twitter Card -->
@@ -34,34 +33,155 @@
   <!-- Fonts - Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Preload critical assets -->
-  <link rel="preload" href="img/logo code.png" as="image" type="image/png">
+  <link rel="preload" href="img/logo%20code.png" as="image" type="image/png">
 </head>
 
 <body class="intro-active">
-  <main id="main-content">
-    <!-- Hero Section -->
-    <section class="hero" id="hero" aria-label="Sección principal">
-      <div class="hero__overlay" aria-hidden="true"></div>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-      <div class="hero__content reveal">
-        <p class="hero__tag" data-text="Consultoría tecnológica">Consultoría tecnológica</p>
+  <!-- Aurora Background Canvas (persistent) -->
+  <canvas id="aurora-canvas" class="aurora-canvas" aria-hidden="true"></canvas>
 
-        <img src="img/logo code.png" alt="Logo Code Repair Tech" class="hero__logo float-animation" width="500" height="300" loading="eager" fetchpriority="high">
+  <!-- Cosmic noise overlay -->
+  <div class="cosmic-noise" aria-hidden="true"></div>
 
-        <p class="hero__subtitle">Diagnosticamos procesos, definimos arquitectura y desplegamos soluciones de software para mejorar control operativo, trazabilidad y rentabilidad.</p>
+  <!-- Floating orbs -->
+  <div class="orbs" aria-hidden="true">
+    <span class="orb orb--violet"></span>
+    <span class="orb orb--cyan"></span>
+    <span class="orb orb--magenta"></span>
+  </div>
 
-        <a class="hero__button magnetic-button" href="#contacto" aria-label="Ir al formulario de contacto">
-          <span>Cuéntanos tu problema</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__ring"></div>
+    <div class="cursor__dot"></div>
+  </div>
+
+  <!-- Top navigation -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__brand" aria-label="Code Repair Tech inicio">
+        <span class="nav__brand-mark">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M4 6 L14 26 L18 26 L28 6 L23 6 L16 21 L9 6 Z" fill="url(#brandGrad)"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="32" y2="32">
+                <stop offset="0%" stop-color="#22D3EE"/>
+                <stop offset="50%" stop-color="#7C3AED"/>
+                <stop offset="100%" stop-color="#F472B6"/>
+              </linearGradient>
+            </defs>
           </svg>
-        </a>
+        </span>
+        <span class="nav__brand-text">Code<span>Repair</span></span>
+      </a>
+
+      <nav class="nav__menu" aria-label="Navegación principal">
+        <a href="#empresa-info" class="nav__link" data-magnetic>Nosotros</a>
+        <a href="#servicios" class="nav__link" data-magnetic>Servicios</a>
+        <a href="#como-funciona" class="nav__link" data-magnetic>Proceso</a>
+        <a href="#contacto" class="nav__link nav__link--cta" data-magnetic>Contacto</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================================ -->
+    <!-- HERO — scroll-driven 3D scene                -->
+    <!-- ============================================ -->
+    <section class="hero" id="hero" aria-label="Sección principal" data-scroll-section>
+      <div class="hero__perspective">
+
+        <!-- 3D floating elements that rotate with scroll -->
+        <div class="hero__scene" id="heroScene" data-3d>
+          <div class="hero__shape hero__shape--1" data-depth="2.5">
+            <div class="shape shape--ring shape--violet">
+              <span class="shape__inner"></span>
+            </div>
+          </div>
+          <div class="hero__shape hero__shape--2" data-depth="1.8">
+            <div class="shape shape--icosa shape--cyan">
+              <span class="shape__face"></span>
+              <span class="shape__face"></span>
+              <span class="shape__face"></span>
+            </div>
+          </div>
+          <div class="hero__shape hero__shape--3" data-depth="3.2">
+            <div class="shape shape--orb shape--magenta">
+              <span class="shape__core"></span>
+              <span class="shape__halo"></span>
+            </div>
+          </div>
+          <div class="hero__shape hero__shape--4" data-depth="1.4">
+            <div class="shape shape--torus shape--violet">
+              <span class="shape__band"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__vignette" aria-hidden="true"></div>
+
+        <div class="hero__content reveal" data-depth="1">
+          <span class="hero__badge" data-magnetic>
+            <span class="hero__badge-dot"></span>
+            Consultoría tecnológica
+          </span>
+
+          <h1 class="hero__title">
+            <span class="hero__title-line">Construimos</span>
+            <span class="hero__title-line hero__title-line--gradient">el software</span>
+            <span class="hero__title-line">del mañana</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            Diagnosticamos procesos, definimos arquitectura y desplegamos soluciones
+            a medida que <em>redefinen</em> el control operativo, la trazabilidad y la
+            rentabilidad de tu empresa.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary magnetic-button" href="#contacto" data-magnetic>
+              <span>Cuéntanos tu problema</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a class="btn btn--ghost magnetic-button" href="#servicios" data-magnetic>
+              <span>Ver servicios</span>
+            </a>
+          </div>
+
+          <div class="hero__meta">
+            <div class="hero__meta-item">
+              <span class="hero__meta-value" data-counter="98">0</span><span class="hero__meta-suffix">%</span>
+              <span class="hero__meta-label">Satisfacción</span>
+            </div>
+            <div class="hero__meta-divider" aria-hidden="true"></div>
+            <div class="hero__meta-item">
+              <span class="hero__meta-value">+</span><span class="hero__meta-value" data-counter="150">0</span>
+              <span class="hero__meta-label">Proyectos</span>
+            </div>
+            <div class="hero__meta-divider" aria-hidden="true"></div>
+            <div class="hero__meta-item">
+              <span class="hero__meta-value">+</span><span class="hero__meta-value" data-counter="5">0</span><span class="hero__meta-suffix"> años</span>
+              <span class="hero__meta-label">Experiencia</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Scroll Indicator -->
@@ -69,262 +189,406 @@
         <div class="scroll-indicator__mouse">
           <div class="scroll-indicator__wheel"></div>
         </div>
-        <span class="scroll-indicator__text">Desplaza para ver más</span>
+        <span class="scroll-indicator__text">Desplaza para descubrir</span>
       </div>
     </section>
 
-    <!-- Morphing Blob Background -->
-    <div class="morphing-blob" aria-hidden="true"></div>
-
-    <!-- About Section -->
-    <section class="section reveal" id="empresa-info" aria-labelledby="empresa-titulo">
+    <!-- ============================================ -->
+    <!-- ABOUT — scroll-triggered 3D card             -->
+    <!-- ============================================ -->
+    <section class="section section--about reveal" id="empresa-info" aria-labelledby="empresa-titulo" data-scroll-section>
       <div class="container about">
         <div class="about__intro">
-          <p class="section__eyebrow">Quiénes somos</p>
-          <h2 id="empresa-titulo" class="animated-gradient-text">Nos posicionamos como socio estratégico de transformación digital</h2>
-          <p>En <strong>Code Repair Tech</strong> combinamos consultoría de negocio y desarrollo de software para convertir procesos manuales en flujos medibles y escalables.</p>
-          <p>Nuestro método inicia con levantamiento técnico-operativo, modelado de requerimientos y matriz de prioridades; después ejecutamos implementación, capacitación y mejora continua.</p>
+          <p class="section__eyebrow">
+            <span class="eyebrow__line"></span>
+            Quiénes somos
+          </p>
+          <h2 id="empresa-titulo" class="section__title">
+            <span>Socio estratégico de</span>
+            <span class="gradient-text">transformación digital</span>
+          </h2>
+          <p class="section__lead">
+            En <strong>Code Repair Tech</strong> combinamos consultoría de negocio y
+            desarrollo de software para convertir procesos manuales en flujos
+            <em>medibles, escalables y automatizados</em>.
+          </p>
+          <p class="section__lead">
+            Nuestro método inicia con levantamiento técnico-operativo, modelado de
+            requerimientos y matriz de prioridades; después ejecutamos implementación,
+            capacitación y mejora continua.
+          </p>
         </div>
 
-        <div class="about__stats">
-          <article class="about__pill pulse-glow" data-tilt>
-            <strong><span data-counter="98">0</span>%</strong>
-            <span>Satisfacción de clientes</span>
+        <div class="about__stats" data-tilt-group>
+          <article class="stat-card" data-tilt>
+            <div class="stat-card__glow" aria-hidden="true"></div>
+            <div class="stat-card__inner">
+              <div class="stat-card__value">
+                <span data-counter="98">0</span><span>%</span>
+              </div>
+              <div class="stat-card__label">Satisfacción de clientes</div>
+              <div class="stat-card__bar"><span style="--bar: 98%"></span></div>
+            </div>
           </article>
-          <article class="about__pill" data-tilt>
-            <strong>+<span data-counter="150">0</span></strong>
-            <span>Proyectos completados</span>
+          <article class="stat-card" data-tilt>
+            <div class="stat-card__glow" aria-hidden="true"></div>
+            <div class="stat-card__inner">
+              <div class="stat-card__value">
+                <span>+</span><span data-counter="150">0</span>
+              </div>
+              <div class="stat-card__label">Proyectos completados</div>
+              <div class="stat-card__bar"><span style="--bar: 92%"></span></div>
+            </div>
           </article>
-          <article class="about__pill" data-tilt>
-            <strong>+<span data-counter="5">0</span> años</strong>
-            <span>Experiencia en el mercado</span>
+          <article class="stat-card" data-tilt>
+            <div class="stat-card__glow" aria-hidden="true"></div>
+            <div class="stat-card__inner">
+              <div class="stat-card__value">
+                <span>+</span><span data-counter="5">0</span><span> años</span>
+              </div>
+              <div class="stat-card__label">Experiencia en el mercado</div>
+              <div class="stat-card__bar"><span style="--bar: 70%"></span></div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="section reveal" id="servicios" aria-labelledby="servicios-titulo">
+    <!-- ============================================ -->
+    <!-- SERVICES — 3D tilt cards                     -->
+    <!-- ============================================ -->
+    <section class="section section--services" id="servicios" aria-labelledby="servicios-titulo" data-scroll-section>
       <div class="container">
-        <h2 id="servicios-titulo">Servicios especializados</h2>
+        <div class="section__head">
+          <p class="section__eyebrow">
+            <span class="eyebrow__line"></span>
+            Servicios especializados
+          </p>
+          <h2 id="servicios-titulo" class="section__title">
+            <span>Soluciones que</span>
+            <span class="gradient-text">se sienten del futuro</span>
+          </h2>
+        </div>
 
-        <div class="services-grid">
-          <article class="card hover-lift" data-tilt>
-            <span class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" aria-label="Sistemas de inventario">
-                <path d="M4 4h16v4H4zm0 6h10v10H4zm12 0h4v10h-4z"/>
-              </svg>
-            </span>
-            <h3>Sistemas de inventario</h3>
-            <p>Control de existencias, rotación y reposición con trazabilidad por lote, sucursal y responsable. Integración con facturación electrónica.</p>
+        <div class="services-grid" data-tilt-group>
+          <article class="service-card" data-tilt data-color="violet">
+            <div class="service-card__glow" aria-hidden="true"></div>
+            <div class="service-card__inner">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-label="Sistemas de inventario">
+                  <path d="M4 4h16v4H4zm0 6h10v10H4zm12 0h4v10h-4z"/>
+                </svg>
+              </span>
+              <h3 class="service-card__title">Sistemas de inventario</h3>
+              <p class="service-card__desc">
+                Control de existencias, rotación y reposición con trazabilidad
+                por lote, sucursal y responsable. Integración con facturación
+                electrónica.
+              </p>
+              <span class="service-card__link">
+                Explorar
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
           </article>
 
-          <article class="card hover-lift" data-tilt>
-            <span class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" aria-label="Software contable">
-                <path d="M5 3h14v18H5zm3 4v2h8V7zm0 4v2h8v-2zm0 4v2h5v-2z"/>
-              </svg>
-            </span>
-            <h3>Software contable</h3>
-            <p>Automatización de conciliaciones, reportes gerenciales y flujos administrativos para toma de decisiones basada en datos.</p>
+          <article class="service-card" data-tilt data-color="cyan">
+            <div class="service-card__glow" aria-hidden="true"></div>
+            <div class="service-card__inner">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-label="Software contable">
+                  <path d="M5 3h14v18H5zm3 4v2h8V7zm0 4v2h8v-2zm0 4v2h5v-2z"/>
+                </svg>
+              </span>
+              <h3 class="service-card__title">Software contable</h3>
+              <p class="service-card__desc">
+                Automatización de conciliaciones, reportes gerenciales y flujos
+                administrativos para toma de decisiones basada en datos.
+              </p>
+              <span class="service-card__link">
+                Explorar
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
           </article>
 
-          <article class="card hover-lift" data-tilt>
-            <span class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" aria-label="Sistemas para restaurantes">
-                <path d="M3 5h18v10H3zm2 2v6h14V7zm1 10h12v2H6z"/>
-              </svg>
-            </span>
-            <h3>Sistemas para restaurantes</h3>
-            <p>Integración de pedidos, cocina, caja e inventario para reducir tiempos y mejorar margen operativo. QR y domicilios.</p>
+          <article class="service-card" data-tilt data-color="magenta">
+            <div class="service-card__glow" aria-hidden="true"></div>
+            <div class="service-card__inner">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-label="Sistemas para restaurantes">
+                  <path d="M3 5h18v10H3zm2 2v6h14V7zm1 10h12v2H6z"/>
+                </svg>
+              </span>
+              <h3 class="service-card__title">Sistemas para restaurantes</h3>
+              <p class="service-card__desc">
+                Integración de pedidos, cocina, caja e inventario para reducir
+                tiempos y mejorar margen operativo. QR y domicilios.
+              </p>
+              <span class="service-card__link">
+                Explorar
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
           </article>
 
-          <article class="card hover-lift" data-tilt>
-            <span class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" aria-label="Automatización de procesos">
-                <path d="M12 3l4 4-1.4 1.4L13 6.8V14h-2V6.8L9.4 8.4 8 7zm-7 9h2v7h12v-7h2v9H5z"/>
-              </svg>
-            </span>
-            <h3>Automatización de procesos</h3>
-            <p>Diseño de flujos, integraciones y reglas de negocio para eliminar tareas repetitivas y errores manuales.</p>
+          <article class="service-card" data-tilt data-color="violet">
+            <div class="service-card__glow" aria-hidden="true"></div>
+            <div class="service-card__inner">
+              <span class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" aria-label="Automatización de procesos">
+                  <path d="M12 3l4 4-1.4 1.4L13 6.8V14h-2V6.8L9.4 8.4 8 7zm-7 9h2v7h12v-7h2v9H5z"/>
+                </svg>
+              </span>
+              <h3 class="service-card__title">Automatización de procesos</h3>
+              <p class="service-card__desc">
+                Diseño de flujos, integraciones y reglas de negocio para
+                eliminar tareas repetitivas y errores manuales.
+              </p>
+              <span class="service-card__link">
+                Explorar
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="section reveal" id="como-funciona" aria-labelledby="proceso-titulo">
+    <!-- ============================================ -->
+    <!-- PROCESS — horizontal scroll story            -->
+    <!-- ============================================ -->
+    <section class="section section--process" id="como-funciona" aria-labelledby="proceso-titulo" data-scroll-section>
       <div class="container">
-        <h2 id="proceso-titulo">Cómo funciona nuestro proceso</h2>
+        <div class="section__head section__head--center">
+          <p class="section__eyebrow">
+            <span class="eyebrow__line"></span>
+            Cómo trabajamos
+          </p>
+          <h2 id="proceso-titulo" class="section__title">
+            <span>Un proceso</span>
+            <span class="gradient-text">diseñado para resultados</span>
+          </h2>
+        </div>
 
-        <div class="steps-grid">
-          <article class="step">
-            <span>1</span>
-            <div>
-              <h3>Brief ejecutivo</h3>
-              <p>Levantamiento de contexto y definición de objetivos de negocio</p>
+        <div class="process-track" id="processTrack">
+          <article class="process-step" data-step="01">
+            <div class="process-step__num">01</div>
+            <div class="process-step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="m20 20-3.5-3.5" stroke-linecap="round"/>
+              </svg>
             </div>
+            <h3>Brief ejecutivo</h3>
+            <p>Levantamiento de contexto y definición de objetivos de negocio en sesiones intensivas.</p>
+            <span class="process-step__chip">1-2 días</span>
           </article>
 
-          <article class="step">
-            <span>2</span>
-            <div>
-              <h3>Diagnóstico técnico</h3>
-              <p>Análisis profundo y definición de alcance y arquitectura</p>
+          <article class="process-step" data-step="02">
+            <div class="process-step__num">02</div>
+            <div class="process-step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 4h18v6H3zM3 14h18v6H3z" stroke-linejoin="round"/>
+                <path d="M7 7h4M7 17h4" stroke-linecap="round"/>
+              </svg>
             </div>
+            <h3>Diagnóstico técnico</h3>
+            <p>Análisis profundo, definición de alcance y arquitectura óptima para tu organización.</p>
+            <span class="process-step__chip">3-5 días</span>
           </article>
 
-          <article class="step">
-            <span>3</span>
-            <div>
-              <h3>Desarrollo iterativo</h3>
-              <p>Construcción con validación funcional continua</p>
+          <article class="process-step" data-step="03">
+            <div class="process-step__num">03</div>
+            <div class="process-step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="m8 6-5 6 5 6M16 6l5 6-5 6M14 4l-4 16" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
+            <h3>Desarrollo iterativo</h3>
+            <p>Construcción con validación funcional continua y entregas incrementales.</p>
+            <span class="process-step__chip">2-12 semanas</span>
           </article>
 
-          <article class="step">
-            <span>4</span>
-            <div>
-              <h3>Implementación</h3>
-              <p>Capacitación, estabilización y soporte evolutivo</p>
+          <article class="process-step" data-step="04">
+            <div class="process-step__num">04</div>
+            <div class="process-step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M5 12 10 17 20 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
+            <h3>Implementación</h3>
+            <p>Capacitación, estabilización y soporte evolutivo post-lanzamiento.</p>
+            <span class="process-step__chip">Continuo</span>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section section--contact reveal" id="contacto" aria-labelledby="contacto-titulo">
+    <!-- ============================================ -->
+    <!-- CONTACT — form inside glass panel            -->
+    <!-- ============================================ -->
+    <section class="section section--contact" id="contacto" aria-labelledby="contacto-titulo" data-scroll-section>
       <div class="container container--narrow">
-        <h2 id="contacto-titulo">Solicita una solución a medida</h2>
-        <p class="section__description">Cuéntanos sobre tu reto y te contactaremos en menos de 24 horas</p>
+        <div class="contact-panel reveal">
+          <div class="contact-panel__glow" aria-hidden="true"></div>
+          <div class="contact-panel__inner">
+            <p class="section__eyebrow">
+              <span class="eyebrow__line"></span>
+              Hablemos
+            </p>
+            <h2 id="contacto-titulo" class="section__title">
+              <span>Solicita una</span>
+              <span class="gradient-text">solución a medida</span>
+            </h2>
+            <p class="section__description">
+              Cuéntanos sobre tu reto y te contactaremos en menos de 24 horas.
+            </p>
 
-        <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="de72a164-54b1-425a-9669-f1a1c552e146">
-          <input type="hidden" name="subject" value="Nuevo contacto desde Code Repair Tech">
-          <input type="hidden" name="from_name" value="Landing Code Repair Tech">
-          <input type="checkbox" name="botcheck" style="display: none" tabindex="-1" autocomplete="off">
+            <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <input type="hidden" name="access_key" value="de72a164-54b1-425a-9669-f1a1c552e146">
+              <input type="hidden" name="subject" value="Nuevo contacto desde Code Repair Tech">
+              <input type="hidden" name="from_name" value="Landing Code Repair Tech">
+              <input type="checkbox" name="botcheck" style="display: none" tabindex="-1" autocomplete="off">
 
-          <div class="form-grid">
-            <div class="form__field">
-              <label for="nombre">Nombre completo <span aria-label="obligatorio">*</span></label>
-              <input id="nombre" name="nombre" type="text" autocomplete="name" required placeholder="Ej: Juan Pérez" aria-required="true">
-            </div>
+              <div class="form-grid">
+                <div class="form__field">
+                  <label for="nombre">Nombre completo <span aria-label="obligatorio">*</span></label>
+                  <input id="nombre" name="nombre" type="text" autocomplete="name" required placeholder="Ej: Juan Pérez" aria-required="true">
+                </div>
 
-            <div class="form__field">
-              <label for="cargo">Cargo <span aria-label="obligatorio">*</span></label>
-              <input id="cargo" name="cargo" type="text" placeholder="Ej: Gerente de Operaciones" required aria-required="true">
-            </div>
+                <div class="form__field">
+                  <label for="cargo">Cargo <span aria-label="obligatorio">*</span></label>
+                  <input id="cargo" name="cargo" type="text" placeholder="Ej: Gerente de Operaciones" required aria-required="true">
+                </div>
 
-            <div class="form__field">
-              <label for="empresa">Empresa <span aria-label="obligatorio">*</span></label>
-              <input id="empresa" name="empresa" type="text" autocomplete="organization" required placeholder="Nombre de tu empresa" aria-required="true">
-            </div>
+                <div class="form__field">
+                  <label for="empresa">Empresa <span aria-label="obligatorio">*</span></label>
+                  <input id="empresa" name="empresa" type="text" autocomplete="organization" required placeholder="Nombre de tu empresa" aria-required="true">
+                </div>
 
-            <div class="form__field">
-              <label for="sector">Sector <span aria-label="obligatorio">*</span></label>
-              <input id="sector" name="sector" type="text" placeholder="Ej: Retail, manufactura, servicios" required aria-required="true">
-            </div>
+                <div class="form__field">
+                  <label for="sector">Sector <span aria-label="obligatorio">*</span></label>
+                  <input id="sector" name="sector" type="text" placeholder="Ej: Retail, manufactura, servicios" required aria-required="true">
+                </div>
 
-            <div class="form__field">
-              <label for="correo">Correo corporativo <span aria-label="obligatorio">*</span></label>
-              <input id="correo" name="correo" type="email" autocomplete="email" placeholder="contacto@empresa.com" required aria-required="true">
-            </div>
+                <div class="form__field">
+                  <label for="correo">Correo corporativo <span aria-label="obligatorio">*</span></label>
+                  <input id="correo" name="correo" type="email" autocomplete="email" placeholder="contacto@empresa.com" required aria-required="true">
+                </div>
 
-            <div class="form__field">
-              <label for="telefono">Teléfono <span aria-label="obligatorio">*</span></label>
-              <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+57 300 000 0000" required aria-required="true">
-            </div>
+                <div class="form__field">
+                  <label for="telefono">Teléfono <span aria-label="obligatorio">*</span></label>
+                  <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+57 300 000 0000" required aria-required="true">
+                </div>
 
-            <div class="form__field">
-              <label for="ciudad">Ciudad <span aria-label="obligatorio">*</span></label>
-              <input id="ciudad" name="ciudad" type="text" autocomplete="address-level2" required placeholder="Ciudad de operación" aria-required="true">
-            </div>
+                <div class="form__field">
+                  <label for="ciudad">Ciudad <span aria-label="obligatorio">*</span></label>
+                  <input id="ciudad" name="ciudad" type="text" autocomplete="address-level2" required placeholder="Ciudad de operación" aria-required="true">
+                </div>
 
-            <div class="form__field">
-              <label for="pais">País <span aria-label="obligatorio">*</span></label>
-              <input id="pais" name="pais" type="text" autocomplete="country-name" required placeholder="País" aria-required="true">
-            </div>
+                <div class="form__field">
+                  <label for="pais">País <span aria-label="obligatorio">*</span></label>
+                  <input id="pais" name="pais" type="text" autocomplete="country-name" required placeholder="País" aria-required="true">
+                </div>
 
-            <div class="form__field">
-              <label for="tamano">Tamaño de empresa <span aria-label="obligatorio">*</span></label>
-              <select id="tamano" name="tamanoEmpresa" required aria-required="true">
-                <option value="" selected disabled>Selecciona una opción</option>
-                <option value="micro">1 a 10 colaboradores</option>
-                <option value="pequena">11 a 50 colaboradores</option>
-                <option value="mediana">51 a 200 colaboradores</option>
-                <option value="grande">Más de 200 colaboradores</option>
-              </select>
-            </div>
+                <div class="form__field">
+                  <label for="tamano">Tamaño de empresa <span aria-label="obligatorio">*</span></label>
+                  <select id="tamano" name="tamanoEmpresa" required aria-required="true">
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="micro">1 a 10 colaboradores</option>
+                    <option value="pequena">11 a 50 colaboradores</option>
+                    <option value="mediana">51 a 200 colaboradores</option>
+                    <option value="grande">Más de 200 colaboradores</option>
+                  </select>
+                </div>
 
-            <div class="form__field">
-              <label for="tipo-problema">Tipo de problema <span aria-label="obligatorio">*</span></label>
-              <select id="tipo-problema" name="tipoProblema" required aria-required="true">
-                <option value="" selected disabled>Selecciona una opción</option>
-                <option value="software">Desarrollo de software</option>
-                <option value="inventario">Control de inventario</option>
-                <option value="contabilidad">Software contable</option>
-                <option value="operaciones">Optimización operativa</option>
-                <option value="integraciones">Integraciones</option>
-              </select>
-            </div>
+                <div class="form__field">
+                  <label for="tipo-problema">Tipo de problema <span aria-label="obligatorio">*</span></label>
+                  <select id="tipo-problema" name="tipoProblema" required aria-required="true">
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="software">Desarrollo de software</option>
+                    <option value="inventario">Control de inventario</option>
+                    <option value="contabilidad">Software contable</option>
+                    <option value="operaciones">Optimización operativa</option>
+                    <option value="integraciones">Integraciones</option>
+                  </select>
+                </div>
 
-            <div class="form__field">
-              <label for="presupuesto">Rango de presupuesto <span aria-label="obligatorio">*</span></label>
-              <select id="presupuesto" name="presupuesto" required aria-required="true">
-                <option value="" selected disabled>Selecciona una opción</option>
-                <option value="basico">Básico</option>
-                <option value="medio">Medio</option>
-                <option value="alto">Alto</option>
-                <option value="enterprise">Enterprise</option>
-              </select>
-            </div>
+                <div class="form__field">
+                  <label for="presupuesto">Rango de presupuesto <span aria-label="obligatorio">*</span></label>
+                  <select id="presupuesto" name="presupuesto" required aria-required="true">
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="basico">Básico</option>
+                    <option value="medio">Medio</option>
+                    <option value="alto">Alto</option>
+                    <option value="enterprise">Enterprise</option>
+                  </select>
+                </div>
 
-            <div class="form__field">
-              <label for="plazo">Plazo estimado <span aria-label="obligatorio">*</span></label>
-              <select id="plazo" name="plazo" required aria-required="true">
-                <option value="" selected disabled>Selecciona una opción</option>
-                <option value="urgente">Menos de 1 mes</option>
-                <option value="corto">1 a 3 meses</option>
-                <option value="medio">3 a 6 meses</option>
-                <option value="largo">Más de 6 meses</option>
-              </select>
-            </div>
+                <div class="form__field">
+                  <label for="plazo">Plazo estimado <span aria-label="obligatorio">*</span></label>
+                  <select id="plazo" name="plazo" required aria-required="true">
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="urgente">Menos de 1 mes</option>
+                    <option value="corto">1 a 3 meses</option>
+                    <option value="medio">3 a 6 meses</option>
+                    <option value="largo">Más de 6 meses</option>
+                  </select>
+                </div>
 
-            <div class="form__field form__field--full">
-              <label for="descripcion">Descripción del problema <span aria-label="obligatorio">*</span></label>
-              <textarea id="descripcion" name="descripcion" rows="5" maxlength="700" placeholder="Describe el reto actual, qué esperas mejorar y qué impacto deseas lograr. Cuanta más información, mejor podremos ayudarte." required aria-required="true"></textarea>
-              <small class="form__hint">Máximo 700 caracteres</small>
-            </div>
+                <div class="form__field form__field--full">
+                  <label for="descripcion">Descripción del problema <span aria-label="obligatorio">*</span></label>
+                  <textarea id="descripcion" name="descripcion" rows="5" maxlength="700" placeholder="Describe el reto actual, qué esperas mejorar y qué impacto deseas lograr." required aria-required="true"></textarea>
+                  <small class="form__hint">Máximo 700 caracteres</small>
+                </div>
+              </div>
+
+              <button class="btn btn--primary btn--full magnetic-button" type="submit" data-magnetic>
+                <span>Solicitar solución</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <p class="form__feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
+            </form>
           </div>
-
-          <button class="hero__button magnetic-button" type="submit">
-            <span>Solicitar solución</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-
-          <p class="form__feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
-        </form>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer__content">
-      <p class="footer__brand">
-        <strong>Code Repair Tech</strong>
-        <span class="footer__tagline">Soluciones empresariales con tecnología</span>
-      </p>
-      <p class="footer__copy">© 2025 Todos los derechos reservados</p>
+    <div class="container footer__inner">
+      <div class="footer__brand-block">
+        <p class="footer__brand">
+          <strong>Code Repair Tech</strong>
+          <span class="footer__tagline">Soluciones empresariales con tecnología</span>
+        </p>
+      </div>
+      <div class="footer__meta">
+        <p class="footer__copy">© 2025 Todos los derechos reservados</p>
+        <p class="footer__build">
+          <span class="footer__build-dot"></span>
+          Construido con intención
+        </p>
+      </div>
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
+  <!-- Back to Top -->
   <button class="back-to-top" id="backToTop" aria-label="Volver arriba" hidden>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
       <path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
