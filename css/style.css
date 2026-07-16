@@ -2099,3 +2099,64 @@ button { font-family: inherit; background: none; border: 0; color: inherit; curs
   .reveal, [data-reveal] { opacity: 1; transform: none; }
   .hshape { display: none; }
 }
+
+/* ============================================
+   AÑADIDOS — "La señal que repara"
+   ============================================ */
+
+/* Etiqueta de campos opcionales (menos fricción = más conversión) */
+.form__optional {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+
+/* Cuando el módulo 3D está activo, el orbe CSS de respaldo se oculta */
+.services-stage.has-3d .stage-orbit { opacity: 0; visibility: hidden; }
+.services-stage.has-3d .stage-label { position: relative; z-index: 2; }
+.services-stage.has-3d .stage-corners { z-index: 2; }
+
+/* CTA flotante de WhatsApp */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.1rem 0.75rem 0.85rem;
+  border-radius: var(--r-pill);
+  background: linear-gradient(135deg, #1EBE5D 0%, #128C4B 100%);
+  color: #fff;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(18, 140, 75, 0.45), 0 0 0 0 rgba(30, 190, 93, 0.5);
+  transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out);
+  animation: wa-pulse 2.6s var(--ease-out) infinite;
+}
+.whatsapp-fab:hover,
+.whatsapp-fab:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(18, 140, 75, 0.55);
+}
+.whatsapp-fab:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.whatsapp-fab svg { flex-shrink: 0; }
+
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 8px 24px rgba(18, 140, 75, 0.45), 0 0 0 0 rgba(30, 190, 93, 0.45); }
+  60%  { box-shadow: 0 8px 24px rgba(18, 140, 75, 0.45), 0 0 0 14px rgba(30, 190, 93, 0); }
+  100% { box-shadow: 0 8px 24px rgba(18, 140, 75, 0.45), 0 0 0 0 rgba(30, 190, 93, 0); }
+}
+
+@media (max-width: 640px) {
+  .whatsapp-fab { bottom: 1rem; left: 1rem; padding: 0.7rem; }
+  .whatsapp-fab__label { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-fab { animation: none; }
+}
