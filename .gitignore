@@ -5,3 +5,6 @@
 node_modules
 .cache
 .DS_Store
+
+# Salida del "build" de Netlify (se genera en cada deploy)
+dist
