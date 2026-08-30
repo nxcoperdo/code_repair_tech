@@ -2,7 +2,10 @@
 # Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  # Sin build: HTML plano servido desde la raíz del repo
+  # Sin build real: el sitio es HTML plano servido desde la raíz del repo.
+  # Se define un comando no-op para anular cualquier "npm run build" configurado
+  # en el panel de Netlify (netlify.toml tiene prioridad sobre la UI).
+  command = "echo 'Sitio estatico: no requiere build'"
   publish = "."
 
 # Headers de seguridad para todos los archivos

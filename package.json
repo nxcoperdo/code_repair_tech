@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "Portafolio de Nicolás Perdomo — sitio estático de una sola página",
   "private": true,
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "echo \"Sitio estatico: no requiere build\""
+  }
 }
