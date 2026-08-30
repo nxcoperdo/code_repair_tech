@@ -1,783 +1,584 @@
-<!doctype html>
-<html class="no-js" lang="es">
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#02040A">
-  <meta name="color-scheme" content="dark">
-  <meta name="description" content="Code Repair Tech — Soluciones de software empresarial con tecnología futurista. Sistemas a medida, inventario, contabilidad y automatización.">
-  <meta name="keywords" content="software empresarial, sistemas de inventario, automatización, consultoría tecnológica, software contable, desarrollo a medida">
-  <meta name="author" content="Code Repair Tech">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nicolás Perdomo — Desarrollador de software · Neiva, Huila</title>
+<meta name="description" content="Construyo y opero plataformas de software en producción desde Neiva, Huila. Fundador de Code Repair Tech.">
+<meta property="og:title" content="Nicolás Perdomo — Ingeniero de software">
+<meta property="og:description" content="Tres plataformas en producción. Backend, infraestructura, diseño y soporte, hechos por una sola persona.">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/crt-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#08161A;          /* negro petróleo, con verde adentro */
+  --ink-2:#0D2027;        /* superficie elevada */
+  --ink-3:#123039;        /* bordes */
+  --bone:#F0EADF;         /* texto principal, hueso cálido */
+  --bone-60:rgba(240,234,223,.62);
+  --bone-38:rgba(240,234,223,.38);
+  --blue:#2E9BFF;         /* Code Repair Tech */
+  --orange:#FF7A1A;       /* GigantYa */
+  --green:#3DD68C;        /* Daemon Leads */
+  --gold:#E8B23A;         /* AgroValor */
+  --shell:min(1180px,100% - 48px);
+}
 
-  <title>Code Repair Tech | Soluciones de Software Empresarial</title>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--bone);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  font-variation-settings:"wdth" 100,"wght" 400;
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--blue);color:#04131A}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
 
-  <meta property="og:title" content="Code Repair Tech | Soluciones de Software Empresarial">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="img/logo_code_con_fond.jpeg">
-  <meta property="og:description" content="Diagnosticamos procesos, definimos arquitectura y desplegamos soluciones de software empresarial.">
+.shell{width:var(--shell);margin-inline:auto}
+section{padding:clamp(88px,11vw,150px) 0}
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Code Repair Tech">
-  <meta name="twitter:description" content="Soluciones de software empresarial a medida">
-  <meta property="twitter:image" content="img/logo_code_con_fond.jpeg">
+/* ---------- tipografía ---------- */
+.display{
+  font-variation-settings:"wdth" 122,"wght" 800;
+  line-height:.94;letter-spacing:-.035em;text-transform:none;
+}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12.5px;
+  letter-spacing:.2em;text-transform:uppercase;font-weight:600}
 
-  <link rel="icon" type="image/jpeg" href="img/logo_code_con_fond.jpeg">
-  <link rel="apple-touch-icon" href="img/logo_code_con_fond.jpeg">
-  <link rel="manifest" href="site.webmanifest">
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--bone-38);margin-bottom:26px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);flex:0 0 auto}
+.h2{font-size:clamp(34px,5vw,56px);margin-bottom:20px}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--bone-60);max-width:60ch}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+/* ---------- barra superior ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:80;
+  backdrop-filter:blur(14px);background:rgba(8,22,26,.72);
+  border-bottom:1px solid rgba(240,234,223,.07)}
+.nav{width:var(--shell);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;
+  gap:20px;height:70px}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-brand img{height:22px;width:auto}
+.nav-links{display:flex;gap:30px}
+.nav-links a{text-decoration:none;color:var(--bone-60);font-size:14.5px;transition:color .2s}
+.nav-links a:hover{color:var(--bone)}
+.nav-end{display:flex;align-items:center;gap:14px}
+.nav-cta{text-decoration:none;background:var(--blue);color:#04131A;padding:11px 22px;border-radius:999px;
+  font-weight:700;font-size:14.5px;white-space:nowrap;transition:transform .18s,filter .18s}
+.nav-cta:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.nav-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;flex:0 0 auto;
+  background:none;border:0;color:var(--bone);cursor:pointer}
+.nav-toggle span{position:relative;display:block;width:22px;height:2px;background:currentColor;border-radius:2px;
+  transition:background .2s}
+.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;width:22px;height:2px;
+  background:currentColor;border-radius:2px;transition:transform .24s ease}
+.nav-toggle span::before{top:-7px}
+.nav-toggle span::after{top:7px}
+.nav-open .nav-toggle span{background:transparent}
+.nav-open .nav-toggle span::before{transform:translateY(7px) rotate(45deg)}
+.nav-open .nav-toggle span::after{transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:860px){
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;top:70px;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(8,22,26,.98);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--ink-3);padding:6px 0;
+    transform:translateY(-10px);opacity:0;pointer-events:none;
+    transition:transform .24s ease,opacity .24s ease}
+  .nav-links a{padding:16px 26px;font-size:16px;color:var(--bone);
+    border-bottom:1px solid rgba(240,234,223,.05)}
+  .nav-links a:last-child{border-bottom:0}
+  .nav-open .nav-links{transform:none;opacity:1;pointer-events:auto}
+}
 
-  <link rel="stylesheet" href="css/style.css">
+/* ---------- hero ---------- */
+.hero{padding-top:150px;padding-bottom:0;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(820px 620px at 78% 26%,rgba(46,155,255,.15),transparent 68%)}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.06fr .94fr;gap:48px;align-items:end}
+.hero h1{font-size:clamp(52px,8.4vw,108px);margin:14px 0 0}
+.hero h1 .quiet{display:block;font-variation-settings:"wdth" 88,"wght" 300;
+  font-size:.34em;letter-spacing:-.01em;color:var(--bone-60);line-height:1.3;margin-top:26px;max-width:22ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:38px 0 78px}
+.btn{text-decoration:none;padding:15px 28px;border-radius:999px;font-weight:700;font-size:15.5px;
+  transition:transform .18s,filter .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--blue);color:#04131A}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{border:1px solid var(--ink-3);color:var(--bone)}
+.btn-ghost:hover{background:var(--ink-2)}
 
-  <link rel="preload" href="img/logo%20code.png" as="image" type="image/png">
+.portrait{position:relative;justify-self:end;align-self:end;width:100%;max-width:470px;
+  margin-bottom:-2px;isolation:isolate}
+/* halo azul detrás, un poco más amplio y suave */
+.portrait::before{content:"";position:absolute;left:50%;top:2%;transform:translateX(-50%);
+  width:118%;aspect-ratio:1;z-index:0;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(46,155,255,.34),rgba(46,155,255,.07) 56%,transparent 74%)}
+/* la foto: bajada de contraste/temperatura para entrar en la paleta,
+   y difuminada arriba + izquierda + abajo para que no tenga borde "recortado" */
+.portrait img{position:relative;z-index:1;width:100%;height:auto;
+  filter:saturate(.82) contrast(.94) brightness(.98) sepia(.11) hue-rotate(-6deg)
+    drop-shadow(0 26px 40px rgba(8,22,26,.45));
+  -webkit-mask-image:
+    linear-gradient(180deg,transparent 0,#000 10%,#000 66%,rgba(0,0,0,.5) 87%,transparent 100%),
+    linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);
+  mask-image:
+    linear-gradient(180deg,transparent 0,#000 10%,#000 66%,rgba(0,0,0,.5) 87%,transparent 100%),
+    linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-composite:intersect}
+/* tinte petróleo/azul que funde la foto con el fondo del sitio */
+.portrait::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(8,22,26,.24),transparent 24% 62%,rgba(8,22,26,.5)),
+    radial-gradient(130% 80% at 72% 28%,rgba(46,155,255,.16),transparent 58%);
+  -webkit-mask-image:
+    linear-gradient(180deg,transparent 0,#000 10%,#000 66%,rgba(0,0,0,.5) 87%,transparent 100%),
+    linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);
+  mask-image:
+    linear-gradient(180deg,transparent 0,#000 10%,#000 66%,rgba(0,0,0,.5) 87%,transparent 100%),
+    linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-composite:intersect;
+  mix-blend-mode:overlay}
 
-  <!-- Preconnect to fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+/* ---------- SIGNATURE: franja de sistemas en producción ---------- */
+.live{border-top:1px solid var(--ink-3);border-bottom:1px solid var(--ink-3);background:rgba(13,32,39,.5)}
+.live-inner{width:var(--shell);margin-inline:auto;display:grid;
+  grid-template-columns:auto repeat(3,1fr);gap:0;align-items:stretch}
+.live-label{display:flex;align-items:center;gap:12px;padding:22px 30px 22px 0;
+  border-right:1px solid var(--ink-3);color:var(--bone-38);white-space:nowrap}
+.live-item{padding:22px 26px;border-right:1px solid var(--ink-3);display:flex;flex-direction:column;gap:4px}
+.live-item:last-child{border-right:0}
+.live-name{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px}
+.live-metric{color:var(--bone-60);font-size:14px}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;position:relative}
+.dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid currentColor;
+  opacity:0;animation:ping 2.6s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{0%{transform:scale(.55);opacity:.85}70%,100%{transform:scale(1.5);opacity:0}}
+.dot.o{background:var(--orange);color:var(--orange)}
+.dot.g{background:var(--green);color:var(--green);animation-delay:.5s}
+.dot.y{background:var(--gold);color:var(--gold)}
+.dot.g::after{animation-delay:.85s}
+.dot.y::after{animation-delay:1.7s}
+@media(max-width:900px){
+  .live-inner{grid-template-columns:1fr 1fr}
+  .live-label{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--ink-3);padding:18px 0}
+  .live-item{border-bottom:1px solid var(--ink-3)}
+  .live-item:nth-child(even){border-right:0}
+}
+@media(max-width:520px){.live-inner{grid-template-columns:1fr}.live-item{border-right:0}}
+
+/* ---------- habilidades ---------- */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1px;
+  background:var(--ink-3);border:1px solid var(--ink-3);border-radius:18px;overflow:hidden;margin-top:52px}
+.skill{background:var(--ink);padding:32px 30px}
+.skill h3{font-size:19px;font-variation-settings:"wdth" 108,"wght" 700;margin-bottom:6px}
+.skill p{color:var(--bone-38);font-size:14.5px;margin-bottom:18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;color:var(--bone-60);
+  border:1px solid var(--ink-3);border-radius:6px;padding:5px 10px;background:var(--ink-2)}
+
+/* ---------- tres caminos ---------- */
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:52px}
+.path{background:var(--ink-2);border:1px solid var(--ink-3);border-radius:18px;padding:34px 30px;
+  transition:border-color .22s,transform .22s}
+.path:hover{border-color:rgba(46,155,255,.45);transform:translateY(-3px)}
+.path .num{color:var(--blue);margin-bottom:16px}
+.path h3{font-size:24px;font-variation-settings:"wdth" 112,"wght" 700;margin-bottom:10px}
+.path p{color:var(--bone-60);font-size:15.5px}
+
+/* ---------- code repair ---------- */
+.crt{border-top:1px solid var(--ink-3);background:
+  radial-gradient(900px 520px at 50% 0%,rgba(46,155,255,.13),transparent 70%),var(--ink)}
+.crt-head{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.crt-logo{width:100%;max-width:400px;filter:drop-shadow(0 10px 40px rgba(46,155,255,.28))}
+@media(max-width:860px){.crt-head{grid-template-columns:1fr;gap:34px}.crt-logo{max-width:100%}}
+
+/* ---------- proyectos ---------- */
+.project{border-top:1px solid var(--ink-3);padding-top:56px;margin-top:72px;
+  display:grid;grid-template-columns:.86fr 1.14fr;gap:56px;align-items:start}
+.project:first-of-type{border-top:0;padding-top:0;margin-top:56px}
+.p-icon{width:66px;height:66px;border-radius:16px;overflow:hidden;margin-bottom:24px}
+.p-icon img,.p-icon svg{width:100%;height:100%;display:block}
+.project h3{font-size:clamp(30px,3.6vw,42px);font-variation-settings:"wdth" 118,"wght" 800;
+  letter-spacing:-.03em;margin-bottom:8px}
+.p-role{margin-bottom:20px}
+.project p{color:var(--bone-60);margin-bottom:16px}
+.p-facts{list-style:none;margin:22px 0 24px}
+.p-facts li{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--ink-3);font-size:15px}
+.p-facts li span:first-child{color:var(--bone-38);flex:0 0 108px}
+.p-link{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:15px;
+  border-bottom:2px solid currentColor;padding-bottom:3px;transition:gap .2s}
+.p-link:hover{gap:15px}
+.shots{display:flex;gap:18px;align-items:flex-start}
+.shot{border:1px solid var(--ink-3);border-radius:14px;overflow:hidden;background:var(--ink-2);
+  box-shadow:0 24px 60px rgba(0,0,0,.45);flex:1 1 auto}
+.shot.phone{flex:0 0 168px;border-radius:20px}
+@media(max-width:900px){
+  .project{grid-template-columns:1fr;gap:34px}
+  .shot.phone{display:none}
+}
+
+/* ---------- formación ---------- */
+.about{border-top:1px solid var(--ink-3)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:32px}}
+.about p{color:var(--bone-60);margin-bottom:16px}
+.about p strong{color:var(--bone);font-weight:700}
+
+/* ---------- contacto ---------- */
+.contact{border-top:1px solid var(--ink-3);text-align:center;
+  background:radial-gradient(760px 420px at 50% 100%,rgba(46,155,255,.16),transparent 70%)}
+.contact h2{font-size:clamp(38px,6.4vw,76px);margin-bottom:20px}
+.contact .lead{margin:0 auto 40px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
+footer{border-top:1px solid var(--ink-3);padding:34px 0}
+.foot{width:var(--shell);margin-inline:auto;display:flex;flex-wrap:wrap;gap:16px;
+  justify-content:space-between;align-items:center;color:var(--bone-38)}
+
+/* ---------- entrada ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .dot::after{animation:none}
+  html{scroll-behavior:auto}
+}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:0}
+  .portrait{justify-self:center;max-width:300px;order:-1;margin-bottom:12px}
+  .hero{padding-top:118px}
+  .hero-actions{margin:32px 0 60px}
+}
+</style>
 </head>
+<body>
 
-<body class="intro-active">
-
-  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-
-  <!-- LOADER -->
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader__inner">
-      <div class="loader__ring"></div>
-      <div class="loader__ring loader__ring--2"></div>
-      <div class="loader__core"></div>
-      <div class="loader__text">CODE REPAIR</div>
+<header>
+  <nav class="nav">
+    <a class="nav-brand" href="#top">
+      <img src="img/crt-logo.png" alt="Code Repair Tech">
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="#habilidades">Habilidades</a>
+      <a href="#trabajemos">Trabajemos</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#sobre-mi">Sobre mí</a>
     </div>
-  </div>
-
-  <!-- 3D SCROLL CANVAS (Three.js, persistent) -->
-  <canvas id="webgl-canvas" class="webgl-canvas" aria-hidden="true"></canvas>
-
-  <!-- 3D Tilt-3D scroll section canvas (service spheres) -->
-  <canvas id="scene-canvas" class="scene-canvas" aria-hidden="true"></canvas>
-
-  <!-- Subtle grid overlay -->
-  <div class="grid-overlay" aria-hidden="true"></div>
-
-  <!-- Custom Cursor -->
-  <div class="cursor" id="cursor" aria-hidden="true">
-    <div class="cursor__ring"></div>
-    <div class="cursor__dot"></div>
-    <div class="cursor__label" id="cursorLabel">CLICK</div>
-  </div>
-
-  <!-- Top navigation -->
-  <header class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#hero" class="nav__brand" aria-label="Code Repair Tech inicio">
-        <span class="nav__brand-mark">
-          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="brandGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#00E5FF"/>
-                <stop offset="100%" stop-color="#FF5A1F"/>
-              </linearGradient>
-            </defs>
-            <path d="M4 6 L14 26 L18 26 L28 6 L23 6 L16 21 L9 6 Z" fill="url(#brandGrad)"/>
-            <circle cx="16" cy="14" r="1.5" fill="#FF5A1F"/>
-          </svg>
-        </span>
-        <span class="nav__brand-text">Code<span>Repair</span></span>
-      </a>
-
-      <nav class="nav__menu" aria-label="Navegación principal">
-        <a href="#empresa-info" class="nav__link" data-magnetic data-cursor="VIEW">Nosotros</a>
-        <a href="#servicios" class="nav__link" data-magnetic data-cursor="VIEW">Servicios</a>
-        <a href="#como-funciona" class="nav__link" data-magnetic data-cursor="VIEW">Proceso</a>
-        <a href="#contacto" class="nav__link nav__link--cta" data-magnetic data-cursor="HABLEMOS">Contacto</a>
-      </nav>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="nav-end">
+      <a class="nav-cta" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Escríbeme</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span></button>
     </div>
-    <div class="nav__progress" id="navProgress" aria-hidden="true"></div>
-  </header>
+  </nav>
+</header>
 
-  <main id="main-content">
+<main id="top">
 
-    <!-- ============================================ -->
-    <!-- HERO                                         -->
-    <!-- ============================================ -->
-    <section class="hero" id="hero" aria-label="Sección principal">
-      <div class="hero__bg">
-        <div class="hero__bg-grid" aria-hidden="true"></div>
-        <div class="hero__bg-glow hero__bg-glow--orange" aria-hidden="true"></div>
-        <div class="hero__bg-glow hero__bg-glow--blue" aria-hidden="true"></div>
-      </div>
-
-      <!-- Floating 2D shapes for parallax -->
-      <div class="hero__shapes" id="heroShapes" data-3d>
-        <div class="hshape hshape--ring" data-depth="3.5">
-          <span class="hshape__inner"></span>
-          <span class="hshape__inner hshape__inner--2"></span>
-        </div>
-        <div class="hshape hshape--cube" data-depth="2.2">
-          <span class="hshape__face"></span>
-          <span class="hshape__face"></span>
-          <span class="hshape__face"></span>
-          <span class="hshape__face"></span>
-          <span class="hshape__face"></span>
-          <span class="hshape__face"></span>
-        </div>
-        <div class="hshape hshape--torus" data-depth="2.8">
-          <span class="hshape__band"></span>
-        </div>
-        <div class="hshape hshape--orb" data-depth="4">
-          <span class="hshape__core"></span>
-          <span class="hshape__halo"></span>
-        </div>
-        <div class="hshape hshape--triangle" data-depth="1.8">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <polygon points="50,5 95,90 5,90" fill="none" stroke="url(#triGrad)" stroke-width="1.5"/>
-            <defs>
-              <linearGradient id="triGrad" x1="0" y1="0" x2="100" y2="100">
-                <stop offset="0%" stop-color="#00E5FF"/>
-                <stop offset="100%" stop-color="#FF5A1F"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div class="hshape hshape--hex" data-depth="2.5">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" fill="none" stroke="#00E5FF" stroke-width="1.2"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Floating code snippets -->
-      <div class="hero__code" aria-hidden="true">
-        <div class="code-snippet" data-depth="0.8">
-          <span class="code-snippet__lang">JS</span>
-          <pre>const <span class="c-key">fix</span> = <span class="c-fn">repair</span>(code);
-<span class="c-fn">deploy</span>(fix);</pre>
-        </div>
-        <div class="code-snippet code-snippet--right" data-depth="0.6">
-          <span class="code-snippet__lang">SQL</span>
-          <pre><span class="c-key">SELECT</span> * <span class="c-key">FROM</span> solutions
-<span class="c-key">WHERE</span> impact = <span class="c-str">'max'</span>;</pre>
-        </div>
-      </div>
-
-      <div class="hero__content">
-        <div class="hero__badge" data-magnetic>
-          <span class="hero__badge-dot"></span>
-          <span class="hero__badge-text">Consultoría tecnológica · v3.0</span>
-          <span class="hero__badge-arrow">→</span>
-        </div>
-
-        <h1 class="hero__title" data-text-split>
-          <span class="hero__title-line">Construimos</span>
-          <span class="hero__title-line hero__title-line--gradient">el software</span>
-          <span class="hero__title-line">del <em>mañana</em>.</span>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <p class="mono" style="color:var(--blue)">Neiva, Huila · Colombia</p>
+        <h1 class="display">Nicolás<br>Perdomo
+          <span class="quiet">Construyo software que se usa todos los días en municipios del Huila.</span>
         </h1>
-
-        <p class="hero__subtitle">
-          Diagnosticamos procesos, definimos arquitectura y desplegamos
-          <span class="text-orange">soluciones a medida</span> que redefinen el control
-          operativo, la trazabilidad y la rentabilidad de tu empresa.
-        </p>
-
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#contacto" data-magnetic data-cursor="EMPEZAR">
-            <span class="btn__bg"></span>
-            <span class="btn__content">
-              <span>Cuéntanos tu problema</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </a>
-          <a class="btn btn--ghost" href="#servicios" data-magnetic data-cursor="VER">
-            <span class="btn__bg"></span>
-            <span class="btn__content">
-              <span>Ver servicios</span>
-            </span>
-          </a>
-        </div>
-
-        <div class="hero__meta">
-          <div class="hero__meta-item">
-            <span class="hero__meta-value"><span data-counter="98">0</span><span class="hero__meta-suffix">%</span></span>
-            <span class="hero__meta-label">Satisfacción</span>
-            <div class="hero__meta-line"></div>
-          </div>
-          <div class="hero__meta-divider" aria-hidden="true"></div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-value">+<span data-counter="150">0</span></span>
-            <span class="hero__meta-label">Proyectos</span>
-            <div class="hero__meta-line"></div>
-          </div>
-          <div class="hero__meta-divider" aria-hidden="true"></div>
-          <div class="hero__meta-item">
-            <span class="hero__meta-value">+<span data-counter="5">0</span><span class="hero__meta-suffix"> años</span></span>
-            <span class="hero__meta-label">Experiencia</span>
-            <div class="hero__meta-line"></div>
-          </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Hablemos por WhatsApp</a>
+          <a class="btn btn-ghost" href="#proyectos">Ver lo que he construido</a>
         </div>
       </div>
-
-      <!-- Scroll Indicator -->
-      <div class="scroll-indicator" aria-hidden="true">
-        <div class="scroll-indicator__mouse">
-          <div class="scroll-indicator__wheel"></div>
-        </div>
-        <span class="scroll-indicator__text">Desplaza · Scroll</span>
-      </div>
-
-      <!-- Side rails with scroll markers -->
-      <aside class="scroll-rail scroll-rail--left" aria-hidden="true">
-        <span class="scroll-rail__num">01</span>
-        <span class="scroll-rail__line"></span>
-        <span class="scroll-rail__label">HERO</span>
-      </aside>
-      <aside class="scroll-rail scroll-rail--right" aria-hidden="true">
-        <span class="scroll-rail__label">2025</span>
-        <span class="scroll-rail__line"></span>
-        <span class="scroll-rail__num">∞</span>
-      </aside>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- MARQUEE — ticker strip                       -->
-    <!-- ============================================ -->
-    <section class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span class="marquee__item">SOFTWARE A MEDIDA</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">INVENTARIO INTELIGENTE</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">CONTABILIDAD AUTOMATIZADA</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">RESTAURANTES · QR · DOMICILIOS</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">RPA &amp; AUTOMATIZACIÓN</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">SOFTWARE A MEDIDA</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">INVENTARIO INTELIGENTE</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">CONTABILIDAD AUTOMATIZADA</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">RESTAURANTES · QR · DOMICILIOS</span>
-        <span class="marquee__sep">◆</span>
-        <span class="marquee__item">RPA &amp; AUTOMATIZACIÓN</span>
-        <span class="marquee__sep">◆</span>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- ABOUT                                        -->
-    <!-- ============================================ -->
-    <section class="section section--about reveal" id="empresa-info" aria-labelledby="empresa-titulo">
-      <div class="container about">
-        <div class="about__intro">
-          <p class="section__eyebrow" data-reveal>
-            <span class="eyebrow__dot"></span>
-            Quiénes somos
-          </p>
-          <h2 id="empresa-titulo" class="section__title" data-reveal>
-            <span>Socio estratégico de</span>
-            <span class="gradient-text">transformación digital</span>
-          </h2>
-          <p class="section__lead" data-reveal>
-            En <strong>Code Repair Tech</strong> combinamos consultoría de negocio y
-            desarrollo de software para convertir procesos manuales en flujos
-            <em>medibles, escalables y automatizados</em>.
-          </p>
-          <p class="section__lead" data-reveal>
-            Nuestro método inicia con levantamiento técnico-operativo, modelado de
-            requerimientos y matriz de prioridades; después ejecutamos implementación,
-            capacitación y mejora continua.
-          </p>
-          <div class="about__cta" data-reveal>
-            <a class="btn btn--text" href="#contacto" data-magnetic data-cursor="HABLEMOS">
-              <span>Iniciar proyecto</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="about__stats">
-          <article class="stat-card" data-tilt data-reveal>
-            <div class="stat-card__glow" aria-hidden="true"></div>
-            <div class="stat-card__inner">
-              <div class="stat-card__head">
-                <span class="stat-card__num">01</span>
-                <span class="stat-card__chip">SLA</span>
-              </div>
-              <div class="stat-card__value">
-                <span data-counter="98">0</span><span>%</span>
-              </div>
-              <div class="stat-card__label">Satisfacción de clientes</div>
-              <div class="stat-card__bar"><span style="--bar: 98%"></span></div>
-            </div>
-          </article>
-          <article class="stat-card" data-tilt data-reveal>
-            <div class="stat-card__glow" aria-hidden="true"></div>
-            <div class="stat-card__inner">
-              <div class="stat-card__head">
-                <span class="stat-card__num">02</span>
-                <span class="stat-card__chip">DELIVERED</span>
-              </div>
-              <div class="stat-card__value">
-                <span>+</span><span data-counter="150">0</span>
-              </div>
-              <div class="stat-card__label">Proyectos completados</div>
-              <div class="stat-card__bar"><span style="--bar: 92%"></span></div>
-            </div>
-          </article>
-          <article class="stat-card" data-tilt data-reveal>
-            <div class="stat-card__glow" aria-hidden="true"></div>
-            <div class="stat-card__inner">
-              <div class="stat-card__head">
-                <span class="stat-card__num">03</span>
-                <span class="stat-card__chip">TENURE</span>
-              </div>
-              <div class="stat-card__value">
-                <span>+</span><span data-counter="5">0</span><span> años</span>
-              </div>
-              <div class="stat-card__label">Experiencia en el mercado</div>
-              <div class="stat-card__bar"><span style="--bar: 70%"></span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- SERVICES — sticky 3D scene                   -->
-    <!-- ============================================ -->
-    <section class="section section--services" id="servicios" aria-labelledby="servicios-titulo">
-      <div class="container">
-        <div class="section__head section__head--split" data-reveal>
-          <div>
-            <p class="section__eyebrow">
-              <span class="eyebrow__dot"></span>
-              Servicios
-            </p>
-            <h2 id="servicios-titulo" class="section__title">
-              <span>Soluciones que</span>
-              <span class="gradient-text">se sienten del futuro</span>
-            </h2>
-          </div>
-          <p class="section__head-side">
-            Cuatro líneas de servicio, una sola obsesión:
-            <strong>que tu empresa opere 10× mejor</strong>.
-          </p>
-        </div>
-
-        <div class="services-wrap">
-          <!-- Sticky 3D canvas on the left -->
-          <div class="services-stage" id="servicesStage">
-            <div class="services-stage__inner">
-              <div class="stage-label" id="stageLabel">01 · Inventory</div>
-              <div class="stage-orbit">
-                <div class="stage-orbit__ring"></div>
-                <div class="stage-orbit__ring stage-orbit__ring--2"></div>
-                <div class="stage-orbit__core" id="stageCore">
-                  <div class="stage-orbit__icon" id="stageIcon"></div>
-                </div>
-              </div>
-              <div class="stage-corners">
-                <span></span><span></span><span></span><span></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Stacked cards on the right -->
-          <div class="services-stack" id="servicesStack">
-            <article class="service-card" data-tilt data-color="orange" data-index="0">
-              <div class="service-card__glow" aria-hidden="true"></div>
-              <div class="service-card__bg" aria-hidden="true"></div>
-              <div class="service-card__inner">
-                <div class="service-card__top">
-                  <span class="service-card__num">/01</span>
-                  <span class="service-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" role="img" aria-label="Sistemas de inventario">
-                      <path d="M4 4h16v4H4zm0 6h10v10H4zm12 0h4v10h-4z"/>
-                    </svg>
-                  </span>
-                </div>
-                <h3 class="service-card__title">Sistemas de inventario</h3>
-                <p class="service-card__desc">
-                  Control de existencias, rotación y reposición con trazabilidad
-                  por lote, sucursal y responsable. Integración con facturación
-                  electrónica.
-                </p>
-                <div class="service-card__tags">
-                  <span>Trazabilidad</span><span>Lotes</span><span>Sucursales</span>
-                </div>
-                <span class="service-card__link" data-cursor="VER">
-                  Explorar
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </article>
-
-            <article class="service-card" data-tilt data-color="blue" data-index="1">
-              <div class="service-card__glow" aria-hidden="true"></div>
-              <div class="service-card__bg" aria-hidden="true"></div>
-              <div class="service-card__inner">
-                <div class="service-card__top">
-                  <span class="service-card__num">/02</span>
-                  <span class="service-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" role="img" aria-label="Software contable">
-                      <path d="M5 3h14v18H5zm3 4v2h8V7zm0 4v2h8v-2zm0 4v2h5v-2z"/>
-                    </svg>
-                  </span>
-                </div>
-                <h3 class="service-card__title">Software contable</h3>
-                <p class="service-card__desc">
-                  Automatización de conciliaciones, reportes gerenciales y flujos
-                  administrativos para toma de decisiones basada en datos.
-                </p>
-                <div class="service-card__tags">
-                  <span>Reportes</span><span>Conciliación</span><span>BI</span>
-                </div>
-                <span class="service-card__link" data-cursor="VER">
-                  Explorar
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </article>
-
-            <article class="service-card" data-tilt data-color="orange" data-index="2">
-              <div class="service-card__glow" aria-hidden="true"></div>
-              <div class="service-card__bg" aria-hidden="true"></div>
-              <div class="service-card__inner">
-                <div class="service-card__top">
-                  <span class="service-card__num">/03</span>
-                  <span class="service-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" role="img" aria-label="Sistemas para restaurantes">
-                      <path d="M3 5h18v10H3zm2 2v6h14V7zm1 10h12v2H6z"/>
-                    </svg>
-                  </span>
-                </div>
-                <h3 class="service-card__title">Sistemas para restaurantes</h3>
-                <p class="service-card__desc">
-                  Integración de pedidos, cocina, caja e inventario para reducir
-                  tiempos y mejorar margen operativo. QR y domicilios.
-                </p>
-                <div class="service-card__tags">
-                  <span>POS</span><span>QR</span><span>Domicilios</span>
-                </div>
-                <span class="service-card__link" data-cursor="VER">
-                  Explorar
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </article>
-
-            <article class="service-card" data-tilt data-color="blue" data-index="3">
-              <div class="service-card__glow" aria-hidden="true"></div>
-              <div class="service-card__bg" aria-hidden="true"></div>
-              <div class="service-card__inner">
-                <div class="service-card__top">
-                  <span class="service-card__num">/04</span>
-                  <span class="service-card__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" role="img" aria-label="Automatización de procesos">
-                      <path d="M12 3l4 4-1.4 1.4L13 6.8V14h-2V6.8L9.4 8.4 8 7zm-7 9h2v7h12v-7h2v9H5z"/>
-                    </svg>
-                  </span>
-                </div>
-                <h3 class="service-card__title">Automatización de procesos</h3>
-                <p class="service-card__desc">
-                  Diseño de flujos, integraciones y reglas de negocio para
-                  eliminar tareas repetitivas y errores manuales.
-                </p>
-                <div class="service-card__tags">
-                  <span>RPA</span><span>APIs</span><span>Workflows</span>
-                </div>
-                <span class="service-card__link" data-cursor="VER">
-                  Explorar
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- HORIZONTAL SCROLL — big stat                 -->
-    <!-- ============================================ -->
-    <section class="bigstat" aria-hidden="false">
-      <div class="bigstat__inner" id="bigstatTrack">
-        <div class="bigstat__item">
-          <span class="bigstat__num" data-counter="150">0</span>
-          <span class="bigstat__suffix">+</span>
-          <span class="bigstat__label">Proyectos desplegados</span>
-        </div>
-        <div class="bigstat__item bigstat__item--blue">
-          <span class="bigstat__num" data-counter="98">0</span>
-          <span class="bigstat__suffix">%</span>
-          <span class="bigstat__label">Clientes que renuevan</span>
-        </div>
-        <div class="bigstat__item">
-          <span class="bigstat__num" data-counter="12">0</span>
-          <span class="bigstat__suffix">sectores</span>
-          <span class="bigstat__label">Atendidos en LATAM</span>
-        </div>
-        <div class="bigstat__item bigstat__item--blue">
-          <span class="bigstat__num" data-counter="24">0</span>
-          <span class="bigstat__suffix">h</span>
-          <span class="bigstat__label">Tiempo de respuesta</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- PROCESS — pin section with sticky card stack -->
-    <!-- ============================================ -->
-    <section class="section section--process" id="como-funciona" aria-labelledby="proceso-titulo">
-      <div class="container">
-        <div class="section__head section__head--center" data-reveal>
-          <p class="section__eyebrow">
-            <span class="eyebrow__dot"></span>
-            Cómo trabajamos
-          </p>
-          <h2 id="proceso-titulo" class="section__title">
-            <span>Un proceso</span>
-            <span class="gradient-text">diseñado para resultados</span>
-          </h2>
-        </div>
-      </div>
-
-      <div class="process-pin" id="processPin">
-        <div class="process-pin__sticky">
-          <div class="process-pin__progress" id="processProgress" aria-hidden="true">
-            <span class="process-pin__num" id="processNum">01</span>
-            <div class="process-pin__bar"><span></span></div>
-          </div>
-
-          <div class="process-pin__stack" id="processStack">
-            <article class="process-step" data-step="01">
-              <div class="process-step__num">PASO 01 / 04</div>
-              <div class="process-step__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="11" cy="11" r="7"/>
-                  <path d="m20 20-3.5-3.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <h3>Brief ejecutivo</h3>
-              <p>Levantamiento de contexto y definición de objetivos de negocio en sesiones intensivas con tu equipo.</p>
-              <span class="process-step__chip">1-2 días</span>
-            </article>
-
-            <article class="process-step" data-step="02">
-              <div class="process-step__num">PASO 02 / 04</div>
-              <div class="process-step__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M3 4h18v6H3zM3 14h18v6H3z" stroke-linejoin="round"/>
-                  <path d="M7 7h4M7 17h4" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <h3>Diagnóstico técnico</h3>
-              <p>Análisis profundo, definición de alcance y arquitectura óptima para tu organización.</p>
-              <span class="process-step__chip">3-5 días</span>
-            </article>
-
-            <article class="process-step" data-step="03">
-              <div class="process-step__num">PASO 03 / 04</div>
-              <div class="process-step__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="m8 6-5 6 5 6M16 6l5 6-5 6M14 4l-4 16" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <h3>Desarrollo iterativo</h3>
-              <p>Construcción con validación funcional continua y entregas incrementales para reducir riesgo.</p>
-              <span class="process-step__chip">2-12 semanas</span>
-            </article>
-
-            <article class="process-step" data-step="04">
-              <div class="process-step__num">PASO 04 / 04</div>
-              <div class="process-step__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M5 12 10 17 20 7" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <h3>Implementación</h3>
-              <p>Capacitación, estabilización y soporte evolutivo post-lanzamiento. Tu éxito es nuestro KPI.</p>
-              <span class="process-step__chip">Continuo</span>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- CONTACT — form inside glass panel            -->
-    <!-- ============================================ -->
-    <section class="section section--contact" id="contacto" aria-labelledby="contacto-titulo">
-      <div class="container container--narrow">
-        <div class="contact-panel reveal">
-          <div class="contact-panel__glow" aria-hidden="true"></div>
-          <div class="contact-panel__lines" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="contact-panel__inner">
-            <p class="section__eyebrow" data-reveal>
-              <span class="eyebrow__dot"></span>
-              Hablemos
-            </p>
-            <h2 id="contacto-titulo" class="section__title" data-reveal>
-              <span>Solicita una</span>
-              <span class="gradient-text">solución a medida</span>
-            </h2>
-            <p class="section__description" data-reveal>
-              Cuéntanos sobre tu reto y te contactaremos en menos de 24 horas.
-            </p>
-
-            <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-              <input type="hidden" name="access_key" value="de72a164-54b1-425a-9669-f1a1c552e146">
-              <input type="hidden" name="subject" value="Nuevo contacto desde Code Repair Tech">
-              <input type="hidden" name="from_name" value="Landing Code Repair Tech">
-              <input type="checkbox" name="botcheck" style="display: none" tabindex="-1" autocomplete="off">
-
-              <div class="form-grid">
-                <div class="form__field" data-reveal>
-                  <label for="nombre">Nombre completo <span aria-label="obligatorio">*</span></label>
-                  <input id="nombre" name="nombre" type="text" autocomplete="name" required placeholder="Ej: Juan Pérez" aria-required="true">
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="cargo">Cargo <span aria-label="obligatorio">*</span></label>
-                  <input id="cargo" name="cargo" type="text" placeholder="Ej: Gerente de Operaciones" required aria-required="true">
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="empresa">Empresa <span aria-label="obligatorio">*</span></label>
-                  <input id="empresa" name="empresa" type="text" autocomplete="organization" required placeholder="Nombre de tu empresa" aria-required="true">
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="sector">Sector <span aria-label="obligatorio">*</span></label>
-                  <input id="sector" name="sector" type="text" placeholder="Ej: Retail, manufactura, servicios" required aria-required="true">
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="correo">Correo corporativo <span aria-label="obligatorio">*</span></label>
-                  <input id="correo" name="correo" type="email" autocomplete="email" placeholder="contacto@empresa.com" required aria-required="true">
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="telefono">Teléfono <span aria-label="obligatorio">*</span></label>
-                  <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="+57 300 000 0000" required aria-required="true">
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="ciudad">Ciudad <span aria-label="obligatorio">*</span></label>
-                  <input id="ciudad" name="ciudad" type="text" autocomplete="address-level2" required placeholder="Ciudad de operación" aria-required="true">
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="pais">País <span aria-label="obligatorio">*</span></label>
-                  <input id="pais" name="pais" type="text" autocomplete="country-name" required placeholder="País" aria-required="true">
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="tamano">Tamaño de empresa <span aria-label="obligatorio">*</span></label>
-                  <select id="tamano" name="tamanoEmpresa" required aria-required="true">
-                    <option value="" selected disabled>Selecciona una opción</option>
-                    <option value="micro">1 a 10 colaboradores</option>
-                    <option value="pequena">11 a 50 colaboradores</option>
-                    <option value="mediana">51 a 200 colaboradores</option>
-                    <option value="grande">Más de 200 colaboradores</option>
-                  </select>
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="tipo-problema">Tipo de problema <span aria-label="obligatorio">*</span></label>
-                  <select id="tipo-problema" name="tipoProblema" required aria-required="true">
-                    <option value="" selected disabled>Selecciona una opción</option>
-                    <option value="software">Desarrollo de software</option>
-                    <option value="inventario">Control de inventario</option>
-                    <option value="contabilidad">Software contable</option>
-                    <option value="operaciones">Optimización operativa</option>
-                    <option value="integraciones">Integraciones</option>
-                  </select>
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="presupuesto">Rango de presupuesto <span aria-label="obligatorio">*</span></label>
-                  <select id="presupuesto" name="presupuesto" required aria-required="true">
-                    <option value="" selected disabled>Selecciona una opción</option>
-                    <option value="basico">Básico</option>
-                    <option value="medio">Medio</option>
-                    <option value="alto">Alto</option>
-                    <option value="enterprise">Enterprise</option>
-                  </select>
-                </div>
-                <div class="form__field" data-reveal>
-                  <label for="plazo">Plazo estimado <span aria-label="obligatorio">*</span></label>
-                  <select id="plazo" name="plazo" required aria-required="true">
-                    <option value="" selected disabled>Selecciona una opción</option>
-                    <option value="urgente">Menos de 1 mes</option>
-                    <option value="corto">1 a 3 meses</option>
-                    <option value="medio">3 a 6 meses</option>
-                    <option value="largo">Más de 6 meses</option>
-                  </select>
-                </div>
-                <div class="form__field form__field--full" data-reveal>
-                  <label for="descripcion">Descripción del problema <span aria-label="obligatorio">*</span></label>
-                  <textarea id="descripcion" name="descripcion" rows="5" maxlength="700" placeholder="Describe el reto actual, qué esperas mejorar y qué impacto deseas lograr." required aria-required="true"></textarea>
-                  <small class="form__hint">Máximo 700 caracteres</small>
-                </div>
-              </div>
-
-              <button class="btn btn--primary btn--full" type="submit" data-magnetic data-cursor="ENVIAR">
-                <span class="btn__bg"></span>
-                <span class="btn__content">
-                  <span>Solicitar solución</span>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </button>
-
-              <p class="form__feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand-block">
-        <p class="footer__brand">
-          <strong>Code Repair Tech</strong>
-          <span class="footer__tagline">Soluciones empresariales con tecnología</span>
-        </p>
-      </div>
-      <div class="footer__meta">
-        <p class="footer__copy">© 2025 Todos los derechos reservados</p>
-        <p class="footer__build">
-          <span class="footer__build-dot"></span>
-          Construccion Hecha A Medida · v3.0
-        </p>
+      <div class="portrait">
+        <img src="img/nico.png" alt="Nicolás Perdomo" width="719" height="1000">
       </div>
     </div>
-  </footer>
+  </section>
 
-  <button class="back-to-top" id="backToTop" aria-label="Volver arriba" hidden>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
+  <!-- ============ SIGNATURE: sistemas corriendo ============ -->
+  <div class="live">
+    <div class="live-inner">
+      <div class="live-label mono">En producción ahora</div>
+      <div class="live-item">
+        <div class="live-name"><i class="dot o"></i>GigantYa</div>
+        <div class="live-metric">15 negocios conectados</div>
+      </div>
+      <div class="live-item">
+        <div class="live-name"><i class="dot g"></i>Daemon Leads</div>
+        <div class="live-metric">WhatsApp Business API</div>
+      </div>
+      <div class="live-item">
+        <div class="live-name"><i class="dot y"></i>AgroValor</div>
+        <div class="live-metric">Precio del café en vivo</div>
+      </div>
+    </div>
+  </div>
 
-  <script type="module" src="js/app.js"></script>
+  <!-- ============ HABILIDADES ============ -->
+  <section id="habilidades">
+    <div class="shell">
+      <p class="eyebrow mono">Qué sé hacer</p>
+      <h2 class="h2 display">De la base de datos<br>hasta el logo</h2>
+      <p class="lead">No delego partes del proyecto porque no tengo a quién delegarle. Eso me obligó a aprender todo el recorrido, y hoy es la razón por la que puedo entregar algo funcionando sin coordinar a nadie.</p>
+
+      <div class="skills">
+        <div class="skill">
+          <h3>Backend y APIs</h3>
+          <p>La lógica que sostiene el producto</p>
+          <div class="tags">
+            <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Python</span>
+            <span class="tag">Flask</span><span class="tag">REST</span><span class="tag">Webhooks</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Bases de datos</h3>
+          <p>Modelado, consultas y migraciones</p>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Supabase</span>
+            <span class="tag">Modelado E-R</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Infraestructura</h3>
+          <p>Servidores propios, no solo despliegues</p>
+          <div class="tags">
+            <span class="tag">Linux</span><span class="tag">Ubuntu Server</span><span class="tag">nginx</span>
+            <span class="tag">VPS</span><span class="tag">Cloudflare</span><span class="tag">Netlify</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Frontend y PWA</h3>
+          <p>Apps que funcionan con mala señal</p>
+          <div class="tags">
+            <span class="tag">React</span><span class="tag">PWA</span><span class="tag">Three.js</span>
+            <span class="tag">Tailwind</span><span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Integraciones</h3>
+          <p>Pagos y mensajería del mercado local</p>
+          <div class="tags">
+            <span class="tag">WhatsApp Cloud API</span><span class="tag">MercadoPago</span>
+            <span class="tag">Nequi</span><span class="tag">Meta Graph API</span><span class="tag">Google Places</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>IA aplicada</h3>
+          <p>Agentes que hacen trabajo real, no demos</p>
+          <div class="tags">
+            <span class="tag">Claude API</span><span class="tag">Tool use</span><span class="tag">Agentes autónomos</span>
+            <span class="tag">Generación de contenido</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Producto y diseño</h3>
+          <p>Marca, interfaz y contenido</p>
+          <div class="tags">
+            <span class="tag">Identidad visual</span><span class="tag">UI</span><span class="tag">Figma</span>
+            <span class="tag">Video y redes</span>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Otros</h3>
+          <p>Lo que he tocado en proyectos y estudio</p>
+          <div class="tags">
+            <span class="tag">Java</span><span class="tag">C#</span><span class="tag">Unity</span>
+            <span class="tag">Git</span><span class="tag">Redes</span><span class="tag">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRES CAMINOS ============ -->
+  <section id="trabajemos" style="border-top:1px solid var(--ink-3)">
+    <div class="shell">
+      <p class="eyebrow mono">Trabajemos</p>
+      <h2 class="h2 display">Tres formas de<br>que esto siga</h2>
+      <p class="lead">Cualquiera de las tres empieza igual: un mensaje por WhatsApp contándome qué necesitas.</p>
+
+      <div class="paths">
+        <div class="path">
+          <p class="num mono">Opción 01</p>
+          <h3>Necesitas software</h3>
+          <p>Tienes un negocio y un problema que se resuelve con una app, una plataforma o una automatización. Yo lo construyo completo y lo dejo funcionando.</p>
+        </div>
+        <div class="path">
+          <p class="num mono">Opción 02</p>
+          <h3>Buscas a alguien</h3>
+          <p>Tu equipo necesita un desarrollador que entienda el producto y no solo el ticket. Estoy abierto a trabajo remoto o presencial en Neiva.</p>
+        </div>
+        <div class="path">
+          <p class="num mono">Opción 03</p>
+          <h3>Quieres construir algo juntos</h3>
+          <p>Tienes una idea o un mercado y te falta la parte técnica. Me interesan las alianzas donde ambos ponemos algo real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CODE REPAIR TECH ============ -->
+  <section class="crt">
+    <div class="shell">
+      <div class="crt-head">
+        <div>
+          <p class="eyebrow mono">Fundador</p>
+          <h2 class="h2 display">Code Repair Tech</h2>
+          <p class="lead">Es el estudio desde el que construyo. No es una agencia con equipo: soy yo, y esa es exactamente la propuesta. El que te cotiza es el que escribe el código, el que configura el servidor y el que te contesta cuando algo falla.</p>
+        </div>
+        <div>
+          <img class="crt-logo" src="img/crt-logo.png" alt="Code Repair Tech" style="margin-inline:auto">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS ============ -->
+  <section id="proyectos" style="border-top:1px solid var(--ink-3);padding-top:clamp(70px,9vw,110px)">
+    <div class="shell">
+      <p class="eyebrow mono">Proyectos</p>
+      <h2 class="h2 display">Tres plataformas,<br>todas corriendo</h2>
+      <p class="lead">No son ejercicios ni prototipos. Tienen usuarios, servidores y facturas.</p>
+
+      <!-- GigantYa -->
+      <article class="project">
+        <div>
+          <div class="p-icon"><img src="img/gigantya-icon.png" alt=""></div>
+          <h3>GigantYa</h3>
+          <p class="p-role mono" style="color:var(--orange)">Producto propio · en operación</p>
+          <p>Plataforma de domicilios para Gigante, Huila, un municipio donde no llega ninguna app grande. Los restaurantes pagan una suscripción fija en vez de comisión por pedido, así que el cliente paga lo que vale la comida.</p>
+          <ul class="p-facts">
+            <li><span>Estado</span><span>En producción</span></li>
+            <li><span>Negocios</span><span>15 conectados</span></li>
+            <li><span>Stack</span><span>Node.js · MySQL · PWA · VPS Ubuntu</span></li>
+            <li><span>Pagos</span><span>Nequi · DaviPlata · Bre-B · contraentrega</span></li>
+          </ul>
+          <a class="p-link" href="https://gigantya.com" style="color:var(--orange)" target="_blank" rel="noopener">gigantya.com →</a>
+        </div>
+        <div class="shots">
+          <div class="shot"><img src="img/gigantya-web.jpg" alt="Listado de negocios en GigantYa"></div>
+          <div class="shot phone"><img src="img/gigantya-menu.jpg" alt="Menú de un restaurante en el celular"></div>
+        </div>
+      </article>
+
+      <!-- Daemon Leads -->
+      <article class="project">
+        <div>
+          <div class="p-icon">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="160" height="160" rx="34" fill="#0D1117"/>
+              <path d="M38 52 L66 80 L38 108" fill="none" stroke="#3DD68C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="78" y="92" width="46" height="16" rx="3" fill="#3DD68C"/>
+            </svg>
+          </div>
+          <h3>Daemon Leads</h3>
+          <p class="p-role mono" style="color:var(--green)">Producto propio · en operación</p>
+          <p>Encuentra negocios por zona y rubro, extrae sus datos de contacto y les escribe por WhatsApp desde la API oficial de Meta. Importa contactos, arma campañas y envía por lotes para no pasarse de los límites diarios.</p>
+          <ul class="p-facts">
+            <li><span>Estado</span><span>En producción</span></li>
+            <li><span>Stack</span><span>Python · Supabase · WhatsApp Cloud API</span></li>
+            <li><span>Datos</span><span>Google Places API</span></li>
+            <li><span>Cumplimiento</span><span>Plantillas y opt-in según política de Meta</span></li>
+          </ul>
+        </div>
+        <div class="shots">
+          <div class="shot"><img src="img/daemonleads-panel.jpg" alt="Panel de contactos y campañas de Daemon Leads"></div>
+        </div>
+      </article>
+
+      <!-- AgroValor -->
+      <article class="project">
+        <div>
+          <div class="p-icon"><img src="img/agrovalor-icon.png" alt=""></div>
+          <h3>AgroValor</h3>
+          <p class="p-role mono" style="color:var(--gold)">Producto propio · en operación</p>
+          <p>Le dice al caficultor cuánto le pagan hoy por su carga. Cruza el precio interno de referencia con el mercado internacional, proyecta los próximos días y avisa cuando el precio se mueve.</p>
+          <ul class="p-facts">
+            <li><span>Estado</span><span>En producción</span></li>
+            <li><span>Fuentes</span><span>Precio interno FNC · ICE Futures</span></li>
+            <li><span>Funciones</span><span>Mercado · calculadora · alertas · registro de ventas</span></li>
+            <li><span>Stack</span><span>Python · Supabase · web app</span></li>
+          </ul>
+        </div>
+        <div class="shots">
+          <div class="shot"><img src="img/agrovalor-panel.jpg" alt="Panel de precios del café en AgroValor"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE MÍ ============ -->
+  <section class="about" id="sobre-mi">
+    <div class="shell">
+      <p class="eyebrow mono">Sobre mí</p>
+      <div class="about-grid">
+        <div>
+          <h2 class="h2 display" style="margin-bottom:0">Aprendí<br>construyendo</h2>
+        </div>
+        <div>
+          <p>Casi todo lo que sé hacer lo aprendí levantando cosas que tenían que funcionar el lunes. Leo documentación, rompo el servidor, lo arreglo y sigo.</p>
+          <p>Empecé GigantYa porque en Gigante nadie tenía domicilios organizados y las apps grandes no bajan a municipios de ese tamaño. Para sacarlo adelante me tocó aprender de servidores, de pagos, de políticas de Meta, de diseño y de vender.</p>
+          <p>Trabajo solo. Eso significa que a veces voy más lento que un equipo, pero también que <strong>nada se pierde entre departamentos</strong> y que quien recibe tu mensaje es quien puede resolverlo.</p>
+          <p>Me interesa el software que resuelve problemas de gente concreta en lugares que normalmente se saltan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="contact" id="contacto">
+    <div class="shell">
+      <h2 class="display">Cuéntame qué<br>necesitas</h2>
+      <p class="lead">Escríbeme por WhatsApp y te digo de una si te puedo ayudar, cuánto tomaría y cuánto costaría. Sin formularios ni reuniones de descubrimiento.</p>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Escribir por WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:coderepairtech@gmail.com">Enviar un correo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <span class="mono">Code Repair Tech · Neiva, Huila</span>
+    <span class="mono">coderepairtech.site</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('section > .shell, .live-inner, .project');
+  els.forEach(function(el){el.classList.add('reveal')});
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){el.classList.add('in')});return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+    });
+  },{rootMargin:'0px 0px -12% 0px',threshold:.08});
+  els.forEach(function(el){io.observe(el)});
+  document.querySelector('.hero .shell').classList.add('in');
+})();
+(function(){
+  var body=document.body,t=document.querySelector('.nav-toggle');
+  if(!t)return;
+  function set(open){
+    body.classList.toggle('nav-open',open);
+    t.setAttribute('aria-expanded',open?'true':'false');
+    t.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+  }
+  t.addEventListener('click',function(){set(!body.classList.contains('nav-open'))});
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){set(false)});
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+  window.addEventListener('resize',function(){if(window.innerWidth>860)set(false)});
+})();
+</script>
 </body>
-
 </html>

@@ -1,15 +1,11 @@
-# Netlify configuration for Code Repair Tech
+# Netlify configuration — sitio estático (index.html + carpeta img/)
 # Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  command = "npm run build"
-  publish = "dist"
+  # Sin build: HTML plano servido desde la raíz del repo
+  publish = "."
 
-# Production branch (cambia a "main" si tu rama principal se llama así)
-[build.branch]
-  name = "master"
-
-# Headers de seguridad y cache para todos los archivos
+# Headers de seguridad para todos los archivos
 [[headers]]
   for = "/*"
   [headers.values]
@@ -18,24 +14,14 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
-# Cache largo para assets versionados (JS, CSS, imágenes)
-[[headers]]
-  for = "/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/css/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/img/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Cache corto para HTML (siempre свежая versión)
+# HTML siempre fresco
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Imágenes: cache largo (el navegador las reutiliza entre visitas)
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
