@@ -2,11 +2,12 @@
 # Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  # Sin build real: el sitio es HTML plano servido desde la raíz del repo.
-  # Se define un comando no-op para anular cualquier "npm run build" configurado
-  # en el panel de Netlify (netlify.toml tiene prioridad sobre la UI).
-  command = "echo 'Sitio estatico: no requiere build'"
-  publish = "."
+  # El sitio es estático (index.html + img/). Este "build" no compila nada:
+  # solo copia los archivos a dist/, que es el directorio de publicación.
+  # Se hace así porque el panel de Netlify quedó apuntando a "dist" de la
+  # configuración anterior; generándolo, funciona con cualquier ajuste.
+  command = "rm -rf dist && mkdir dist && cp index.html 404.html robots.txt dist/ && cp -r img dist/"
+  publish = "dist"
 
 # Headers de seguridad para todos los archivos
 [[headers]]
