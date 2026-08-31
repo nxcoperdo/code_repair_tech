@@ -1,4 +1,4 @@
-# https://coderepairtech.site/ — Nicolás Perdomo · Code Repair Tech
+# https://coderepair.site/ — Nicolás Perdomo · Code Repair Tech
 
 # Buscadores tradicionales: acceso total
 User-agent: *
@@ -63,4 +63,4 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://coderepairtech.site/sitemap.xml
+Sitemap: https://coderepair.site/sitemap.xml
