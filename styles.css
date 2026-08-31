@@ -389,6 +389,28 @@ ul,ol{list-style:none;padding:0}
 }
 
 /* =============================================================
+   15b. Preguntas frecuentes
+   ============================================================= */
+.faq{margin-top:2.9rem;border-top:1px solid var(--line)}
+.faq__item{border-bottom:1px solid var(--line)}
+.faq__item summary{
+  list-style:none;cursor:pointer;padding:1.4rem 2.5rem 1.4rem 0;position:relative;
+  font-size:clamp(1.05rem,2vw,1.25rem);
+  font-variation-settings:"wdth" 108,"wght" 640;color:var(--cream);
+  transition:color .25s var(--ease-out);
+}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__item summary::after{
+  content:"+";position:absolute;right:.2rem;top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:1.3rem;color:var(--accent);transition:transform .25s var(--ease-out);
+}
+.faq__item[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq__item summary:hover{color:var(--accent)}
+.faq__a{padding:0 0 1.5rem;max-width:70ch}
+.faq__a p{color:var(--cream-70);font-size:.98rem;line-height:1.7}
+.faq__a a{color:var(--accent);border-bottom:1px solid rgba(46,155,255,.35)}
+
+/* =============================================================
    16. Contacto
    ============================================================= */
 .contact{background:radial-gradient(800px 440px at 50% 100%,rgba(46,155,255,.16),transparent 70%)}
@@ -423,6 +445,9 @@ ul,ol{list-style:none;padding:0}
   width:var(--shell);margin-inline:auto;display:flex;flex-wrap:wrap;gap:1rem;
   justify-content:space-between;align-items:center;color:var(--cream-45);
 }
+.footer__social{display:flex;gap:1.25rem;flex-wrap:wrap}
+.footer__social a{color:var(--cream-45);transition:color .25s var(--ease-out)}
+.footer__social a:hover{color:var(--accent)}
 
 /* =============================================================
    18. Reveals

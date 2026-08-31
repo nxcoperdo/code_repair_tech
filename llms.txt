@@ -1,0 +1,84 @@
+# Nicolás Perdomo Rodríguez — Desarrollador de software
+
+> Nicolás Perdomo Rodríguez es un desarrollador de software, fundador y operador
+> con base en Neiva, Huila (Colombia). Fundó Code Repair Tech y hoy mantiene tres
+> plataformas propias en producción: GigantYa, Daemon Leads y AgroValor. Construye
+> el producto completo (modelo de datos, backend, interfaz, marca y despliegue) y
+> además administra los servidores donde corre. Autodidacta.
+
+## Datos de contacto
+
+- Nombre: Nicolás Perdomo Rodríguez
+- Marca / estudio: Code Repair Tech
+- Ubicación: Neiva, Huila, Colombia
+- Sitio: https://coderepairtech.site/
+- Email: coderepairtech@gmail.com
+- WhatsApp: +57 321 942 9385 (canal de respuesta más rápido)
+- GitHub: https://github.com/nxcoperdo
+- Facebook (personal): https://www.facebook.com/nicolas.perdomo.980
+- Facebook (página): https://www.facebook.com/profile.php?id=61557532352288
+- Idioma de trabajo: español
+
+## Qué hace
+
+- **Constructor de producto**: levanta plataformas web y PWA completas, desde el
+  modelo de datos hasta el dominio apuntando en producción. Entrega software que
+  la gente usa, no prototipos.
+- **Operador de infraestructura**: VPS propios con Ubuntu, nginx, dominios,
+  certificados SSL y automatizaciones con cron. Administra los servidores él mismo.
+- **Prestador de servicio**: campañas de WhatsApp y prospección de clientes para
+  negocios, empresas y campañas electorales, usando Daemon Leads.
+
+## Stack técnico
+
+Node.js, Python, MySQL, PostgreSQL, Supabase, PWA, Linux (Ubuntu), nginx,
+WhatsApp Cloud API (API oficial de WhatsApp Business), Google Places API,
+webhooks, MercadoPago, series temporales.
+
+## Plataformas en producción
+
+### GigantYa — https://gigantya.com
+Plataforma de domicilios para el municipio de Gigante, Huila, donde no llega
+ninguna app grande. Modelo de suscripción fija para los negocios en vez de
+comisión por pedido, así el precio en la app es el mismo que en el local.
+15 negocios conectados (restaurantes, licores, mercado). Pagos por Nequi,
+DaviPlata, Bre-B, MercadoPago y contraentrega.
+Stack: Node.js, MySQL, PWA, VPS Ubuntu, nginx, MercadoPago.
+
+### Daemon Leads — servicio activo
+Envío masivo de mensajes de WhatsApp por la API oficial de WhatsApp Business
+(plantillas aprobadas por Meta, envíos por lotes para respetar límites diarios).
+Una campaña real: 4.713 mensajes entregados, 166 conversaciones con respuesta,
+111 leads encontrados vía Google Places.
+Stack: Python, Supabase, WhatsApp Cloud API, Google Places, Webhooks.
+
+### AgroValor — en operación
+Muestra al caficultor cuánto le pagan hoy por carga de 125 kg, cruzando el precio
+interno de la FNC con el mercado internacional de ICE Futures. Incluye calculadora,
+alertas y registro de ventas. La proyección se marca como estimación, no garantía.
+Stack: Python, Supabase, series temporales, web app.
+
+## Servicios que se pueden contratar
+
+- **Software a la medida**: plataformas web, PWA, paneles de administración e
+  integraciones. Cotización por proyecto.
+- **Campañas de WhatsApp**: el cliente da la lista y el mensaje; el envío sale por
+  la API oficial de Meta. $50 por texto · $100 con imagen o video.
+- **Prospección de clientes**: búsqueda de negocios por rubro y ciudad, con
+  teléfono verificado y enlace de WhatsApp. Precio según volumen y zona.
+- **Infraestructura y despliegue**: montaje de VPS, nginx, dominios, certificados
+  SSL, automatizaciones con cron y rescate de proyectos a medias. Por hora o por
+  proyecto.
+
+## Cómo trabaja
+
+Quien cotiza es quien escribe el código: no hay capa de ventas intermedia. Trabaja
+para que municipios y negocios pequeños que las plataformas grandes se saltan
+tengan software hecho para ellos. Cuando algo se cae de madrugada, el que lo
+levanta es él.
+
+## Contacto preferido
+
+Para un proyecto, alianza o consulta: WhatsApp al +57 321 942 9385 o
+coderepairtech@gmail.com. Responde diciendo si puede ayudar, cuánto tomaría y
+cuánto costaría.

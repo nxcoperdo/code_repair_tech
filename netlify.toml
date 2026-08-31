@@ -8,7 +8,7 @@
   # Netlify quedó apuntando a "dist"; generándolo funciona igual).
   # Se dejan fuera index_8.html (respaldo de un solo archivo), LEEME.md y
   # .htaccess (solo sirve en Apache/Hostinger).
-  command = "rm -rf dist && mkdir dist && cp index.html styles.css main.js 404.html robots.txt dist/ && cp -r assets lib dist/"
+  command = "rm -rf dist && mkdir dist && cp index.html styles.css main.js 404.html robots.txt sitemap.xml llms.txt dist/ && cp -r assets lib dist/"
   publish = "dist"
 
 # Headers de seguridad para todos los archivos
@@ -25,6 +25,24 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Archivos para buscadores y crawlers de IA
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
 
 # Imágenes, video y fuentes: cache largo (el navegador los reutiliza).
 # styles.css y main.js llevan ?v=AAAAMMDD en el HTML para romper caché.
