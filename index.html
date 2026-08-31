@@ -4,581 +4,417 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nicolás Perdomo — Desarrollador de software · Neiva, Huila</title>
-<meta name="description" content="Construyo y opero plataformas de software en producción desde Neiva, Huila. Fundador de Code Repair Tech.">
-<meta property="og:title" content="Nicolás Perdomo — Ingeniero de software">
-<meta property="og:description" content="Tres plataformas en producción. Backend, infraestructura, diseño y soporte, hechos por una sola persona.">
+<meta name="description" content="Construyo plataformas de software y las dejo funcionando en producción. Tres corriendo hoy: GigantYa, Daemon Leads y AgroValor. Fundador de Code Repair Tech, Neiva, Huila.">
+<link rel="canonical" href="https://coderepairtech.site/">
+
 <meta property="og:type" content="website">
-<link rel="icon" href="img/crt-logo.png">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Nicolás Perdomo — Desarrollador de software">
+<meta property="og:description" content="Tres plataformas en producción, una sola persona detrás. Backend, infraestructura, diseño y soporte.">
+<meta property="og:image" content="https://coderepairtech.site/assets/img/og-cover.webp">
+<meta property="og:url" content="https://coderepairtech.site/">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="theme-color" content="#08161A">
+<link rel="icon" href="assets/img/crt-logo.webp">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#08161A;          /* negro petróleo, con verde adentro */
-  --ink-2:#0D2027;        /* superficie elevada */
-  --ink-3:#123039;        /* bordes */
-  --bone:#F0EADF;         /* texto principal, hueso cálido */
-  --bone-60:rgba(240,234,223,.62);
-  --bone-38:rgba(240,234,223,.38);
-  --blue:#2E9BFF;         /* Code Repair Tech */
-  --orange:#FF7A1A;       /* GigantYa */
-  --green:#3DD68C;        /* Daemon Leads */
-  --gold:#E8B23A;         /* AgroValor */
-  --shell:min(1180px,100% - 48px);
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap">
+
+<link rel="preload" as="image" href="assets/img/nico.webp" fetchpriority="high">
+<link rel="stylesheet" href="styles.css?v=20260901">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Nicolás Perdomo Rodríguez",
+  "jobTitle":"Desarrollador de software",
+  "url":"https://coderepairtech.site/",
+  "image":"https://coderepairtech.site/assets/img/nico.webp",
+  "address":{"@type":"PostalAddress","addressLocality":"Neiva","addressRegion":"Huila","addressCountry":"CO"},
+  "worksFor":{"@type":"Organization","name":"Code Repair Tech","url":"https://coderepairtech.site/"},
+  "knowsAbout":["Node.js","Python","PostgreSQL","MySQL","Supabase","Linux","nginx","PWA","WhatsApp Business API"],
+  "email":"coderepairtech@gmail.com"
 }
-
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--ink);color:var(--bone);
-  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
-  font-variation-settings:"wdth" 100,"wght" 400;
-  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-img{display:block;max-width:100%}
-a{color:inherit}
-::selection{background:var(--blue);color:#04131A}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
-
-.shell{width:var(--shell);margin-inline:auto}
-section{padding:clamp(88px,11vw,150px) 0}
-
-/* ---------- tipografía ---------- */
-.display{
-  font-variation-settings:"wdth" 122,"wght" 800;
-  line-height:.94;letter-spacing:-.035em;text-transform:none;
-}
-.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12.5px;
-  letter-spacing:.2em;text-transform:uppercase;font-weight:600}
-
-.eyebrow{display:flex;align-items:center;gap:12px;color:var(--bone-38);margin-bottom:26px}
-.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);flex:0 0 auto}
-.h2{font-size:clamp(34px,5vw,56px);margin-bottom:20px}
-.lead{font-size:clamp(17px,2vw,20px);color:var(--bone-60);max-width:60ch}
-
-/* ---------- barra superior ---------- */
-header{position:fixed;top:0;left:0;right:0;z-index:80;
-  backdrop-filter:blur(14px);background:rgba(8,22,26,.72);
-  border-bottom:1px solid rgba(240,234,223,.07)}
-.nav{width:var(--shell);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;
-  gap:20px;height:70px}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-brand img{height:22px;width:auto}
-.nav-links{display:flex;gap:30px}
-.nav-links a{text-decoration:none;color:var(--bone-60);font-size:14.5px;transition:color .2s}
-.nav-links a:hover{color:var(--bone)}
-.nav-end{display:flex;align-items:center;gap:14px}
-.nav-cta{text-decoration:none;background:var(--blue);color:#04131A;padding:11px 22px;border-radius:999px;
-  font-weight:700;font-size:14.5px;white-space:nowrap;transition:transform .18s,filter .18s}
-.nav-cta:hover{transform:translateY(-1px);filter:brightness(1.08)}
-.nav-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;flex:0 0 auto;
-  background:none;border:0;color:var(--bone);cursor:pointer}
-.nav-toggle span{position:relative;display:block;width:22px;height:2px;background:currentColor;border-radius:2px;
-  transition:background .2s}
-.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;width:22px;height:2px;
-  background:currentColor;border-radius:2px;transition:transform .24s ease}
-.nav-toggle span::before{top:-7px}
-.nav-toggle span::after{top:7px}
-.nav-open .nav-toggle span{background:transparent}
-.nav-open .nav-toggle span::before{transform:translateY(7px) rotate(45deg)}
-.nav-open .nav-toggle span::after{transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:860px){
-  .nav-toggle{display:flex}
-  .nav-links{position:fixed;top:70px;left:0;right:0;flex-direction:column;gap:0;
-    background:rgba(8,22,26,.98);backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--ink-3);padding:6px 0;
-    transform:translateY(-10px);opacity:0;pointer-events:none;
-    transition:transform .24s ease,opacity .24s ease}
-  .nav-links a{padding:16px 26px;font-size:16px;color:var(--bone);
-    border-bottom:1px solid rgba(240,234,223,.05)}
-  .nav-links a:last-child{border-bottom:0}
-  .nav-open .nav-links{transform:none;opacity:1;pointer-events:auto}
-}
-
-/* ---------- hero ---------- */
-.hero{padding-top:150px;padding-bottom:0;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(820px 620px at 78% 26%,rgba(46,155,255,.15),transparent 68%)}
-.hero-grid{position:relative;display:grid;grid-template-columns:1.06fr .94fr;gap:48px;align-items:end}
-.hero h1{font-size:clamp(52px,8.4vw,108px);margin:14px 0 0}
-.hero h1 .quiet{display:block;font-variation-settings:"wdth" 88,"wght" 300;
-  font-size:.34em;letter-spacing:-.01em;color:var(--bone-60);line-height:1.3;margin-top:26px;max-width:22ch}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:38px 0 78px}
-.btn{text-decoration:none;padding:15px 28px;border-radius:999px;font-weight:700;font-size:15.5px;
-  transition:transform .18s,filter .18s,background .18s}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--blue);color:#04131A}
-.btn-primary:hover{filter:brightness(1.08)}
-.btn-ghost{border:1px solid var(--ink-3);color:var(--bone)}
-.btn-ghost:hover{background:var(--ink-2)}
-
-.portrait{position:relative;justify-self:end;align-self:end;width:100%;max-width:470px;
-  margin-bottom:-2px;isolation:isolate}
-/* halo azul detrás, un poco más amplio y suave */
-.portrait::before{content:"";position:absolute;left:50%;top:2%;transform:translateX(-50%);
-  width:118%;aspect-ratio:1;z-index:0;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(46,155,255,.34),rgba(46,155,255,.07) 56%,transparent 74%)}
-/* la foto: bajada de contraste/temperatura para entrar en la paleta,
-   y difuminada arriba + izquierda + abajo para que no tenga borde "recortado" */
-.portrait img{position:relative;z-index:1;width:100%;height:auto;
-  filter:saturate(.82) contrast(.94) brightness(.98) sepia(.11) hue-rotate(-6deg)
-    drop-shadow(0 26px 40px rgba(8,22,26,.45));
-  -webkit-mask-image:
-    linear-gradient(180deg,transparent 0,#000 10%,#000 66%,rgba(0,0,0,.5) 87%,transparent 100%),
-    linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);
-  mask-image:
-    linear-gradient(180deg,transparent 0,#000 10%,#000 66%,rgba(0,0,0,.5) 87%,transparent 100%),
-    linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);
-  -webkit-mask-composite:source-in;mask-composite:intersect}
-/* tinte petróleo/azul que funde la foto con el fondo del sitio */
-.portrait::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(8,22,26,.24),transparent 24% 62%,rgba(8,22,26,.5)),
-    radial-gradient(130% 80% at 72% 28%,rgba(46,155,255,.16),transparent 58%);
-  -webkit-mask-image:
-    linear-gradient(180deg,transparent 0,#000 10%,#000 66%,rgba(0,0,0,.5) 87%,transparent 100%),
-    linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);
-  mask-image:
-    linear-gradient(180deg,transparent 0,#000 10%,#000 66%,rgba(0,0,0,.5) 87%,transparent 100%),
-    linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);
-  -webkit-mask-composite:source-in;mask-composite:intersect;
-  mix-blend-mode:overlay}
-
-/* ---------- SIGNATURE: franja de sistemas en producción ---------- */
-.live{border-top:1px solid var(--ink-3);border-bottom:1px solid var(--ink-3);background:rgba(13,32,39,.5)}
-.live-inner{width:var(--shell);margin-inline:auto;display:grid;
-  grid-template-columns:auto repeat(3,1fr);gap:0;align-items:stretch}
-.live-label{display:flex;align-items:center;gap:12px;padding:22px 30px 22px 0;
-  border-right:1px solid var(--ink-3);color:var(--bone-38);white-space:nowrap}
-.live-item{padding:22px 26px;border-right:1px solid var(--ink-3);display:flex;flex-direction:column;gap:4px}
-.live-item:last-child{border-right:0}
-.live-name{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px}
-.live-metric{color:var(--bone-60);font-size:14px}
-.dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;position:relative}
-.dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid currentColor;
-  opacity:0;animation:ping 2.6s cubic-bezier(0,0,.2,1) infinite}
-@keyframes ping{0%{transform:scale(.55);opacity:.85}70%,100%{transform:scale(1.5);opacity:0}}
-.dot.o{background:var(--orange);color:var(--orange)}
-.dot.g{background:var(--green);color:var(--green);animation-delay:.5s}
-.dot.y{background:var(--gold);color:var(--gold)}
-.dot.g::after{animation-delay:.85s}
-.dot.y::after{animation-delay:1.7s}
-@media(max-width:900px){
-  .live-inner{grid-template-columns:1fr 1fr}
-  .live-label{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--ink-3);padding:18px 0}
-  .live-item{border-bottom:1px solid var(--ink-3)}
-  .live-item:nth-child(even){border-right:0}
-}
-@media(max-width:520px){.live-inner{grid-template-columns:1fr}.live-item{border-right:0}}
-
-/* ---------- habilidades ---------- */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1px;
-  background:var(--ink-3);border:1px solid var(--ink-3);border-radius:18px;overflow:hidden;margin-top:52px}
-.skill{background:var(--ink);padding:32px 30px}
-.skill h3{font-size:19px;font-variation-settings:"wdth" 108,"wght" 700;margin-bottom:6px}
-.skill p{color:var(--bone-38);font-size:14.5px;margin-bottom:18px}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tag{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;color:var(--bone-60);
-  border:1px solid var(--ink-3);border-radius:6px;padding:5px 10px;background:var(--ink-2)}
-
-/* ---------- tres caminos ---------- */
-.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:52px}
-.path{background:var(--ink-2);border:1px solid var(--ink-3);border-radius:18px;padding:34px 30px;
-  transition:border-color .22s,transform .22s}
-.path:hover{border-color:rgba(46,155,255,.45);transform:translateY(-3px)}
-.path .num{color:var(--blue);margin-bottom:16px}
-.path h3{font-size:24px;font-variation-settings:"wdth" 112,"wght" 700;margin-bottom:10px}
-.path p{color:var(--bone-60);font-size:15.5px}
-
-/* ---------- code repair ---------- */
-.crt{border-top:1px solid var(--ink-3);background:
-  radial-gradient(900px 520px at 50% 0%,rgba(46,155,255,.13),transparent 70%),var(--ink)}
-.crt-head{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.crt-logo{width:100%;max-width:400px;filter:drop-shadow(0 10px 40px rgba(46,155,255,.28))}
-@media(max-width:860px){.crt-head{grid-template-columns:1fr;gap:34px}.crt-logo{max-width:100%}}
-
-/* ---------- proyectos ---------- */
-.project{border-top:1px solid var(--ink-3);padding-top:56px;margin-top:72px;
-  display:grid;grid-template-columns:.86fr 1.14fr;gap:56px;align-items:start}
-.project:first-of-type{border-top:0;padding-top:0;margin-top:56px}
-.p-icon{width:66px;height:66px;border-radius:16px;overflow:hidden;margin-bottom:24px}
-.p-icon img,.p-icon svg{width:100%;height:100%;display:block}
-.project h3{font-size:clamp(30px,3.6vw,42px);font-variation-settings:"wdth" 118,"wght" 800;
-  letter-spacing:-.03em;margin-bottom:8px}
-.p-role{margin-bottom:20px}
-.project p{color:var(--bone-60);margin-bottom:16px}
-.p-facts{list-style:none;margin:22px 0 24px}
-.p-facts li{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--ink-3);font-size:15px}
-.p-facts li span:first-child{color:var(--bone-38);flex:0 0 108px}
-.p-link{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:15px;
-  border-bottom:2px solid currentColor;padding-bottom:3px;transition:gap .2s}
-.p-link:hover{gap:15px}
-.shots{display:flex;gap:18px;align-items:flex-start}
-.shot{border:1px solid var(--ink-3);border-radius:14px;overflow:hidden;background:var(--ink-2);
-  box-shadow:0 24px 60px rgba(0,0,0,.45);flex:1 1 auto}
-.shot.phone{flex:0 0 168px;border-radius:20px}
-@media(max-width:900px){
-  .project{grid-template-columns:1fr;gap:34px}
-  .shot.phone{display:none}
-}
-
-/* ---------- formación ---------- */
-.about{border-top:1px solid var(--ink-3)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-@media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:32px}}
-.about p{color:var(--bone-60);margin-bottom:16px}
-.about p strong{color:var(--bone);font-weight:700}
-
-/* ---------- contacto ---------- */
-.contact{border-top:1px solid var(--ink-3);text-align:center;
-  background:radial-gradient(760px 420px at 50% 100%,rgba(46,155,255,.16),transparent 70%)}
-.contact h2{font-size:clamp(38px,6.4vw,76px);margin-bottom:20px}
-.contact .lead{margin:0 auto 40px}
-.contact-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
-
-footer{border-top:1px solid var(--ink-3);padding:34px 0}
-.foot{width:var(--shell);margin-inline:auto;display:flex;flex-wrap:wrap;gap:16px;
-  justify-content:space-between;align-items:center;color:var(--bone-38)}
-
-/* ---------- entrada ---------- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  .dot::after{animation:none}
-  html{scroll-behavior:auto}
-}
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;gap:0}
-  .portrait{justify-self:center;max-width:300px;order:-1;margin-bottom:12px}
-  .hero{padding-top:118px}
-  .hero-actions{margin:32px 0 60px}
-}
-</style>
+</script>
 </head>
 <body>
 
-<header>
-  <nav class="nav">
-    <a class="nav-brand" href="#top">
-      <img src="img/crt-logo.png" alt="Code Repair Tech">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<div id="bg" aria-hidden="true"><canvas id="bgc"></canvas></div>
+<div id="spot" aria-hidden="true"></div>
+
+<header class="nav">
+  <nav class="nav__inner" aria-label="Principal">
+    <a class="nav__brand" href="#top" aria-label="Inicio">
+      <img src="assets/img/crt-logo.webp" alt="Code Repair Tech" width="200" height="79">
     </a>
-    <div class="nav-links" id="nav-links">
-      <a href="#habilidades">Habilidades</a>
-      <a href="#trabajemos">Trabajemos</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#sobre-mi">Sobre mí</a>
+    <div class="nav__links" id="nav-links">
+      <a href="#historia">Historia</a>
+      <a href="#casos">Casos</a>
+      <a href="#trayecto">Trayecto</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
     </div>
-    <div class="nav-end">
-      <a class="nav-cta" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Escríbeme</a>
-      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+    <div class="nav__end">
+      <a class="nav__cta" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Escríbeme</a>
+      <button class="nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span></button>
     </div>
   </nav>
 </header>
 
-<main id="top">
+<main id="contenido">
+<div id="top"></div>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="shell hero-grid">
-      <div>
-        <p class="mono" style="color:var(--blue)">Neiva, Huila · Colombia</p>
-        <h1 class="display">Nicolás<br>Perdomo
-          <span class="quiet">Construyo software que se usa todos los días en municipios del Huila.</span>
-        </h1>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Hablemos por WhatsApp</a>
-          <a class="btn btn-ghost" href="#proyectos">Ver lo que he construido</a>
-        </div>
-      </div>
-      <div class="portrait">
-        <img src="img/nico.png" alt="Nicolás Perdomo" width="719" height="1000">
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="shell hero__grid">
+    <div>
+      <p class="mono hero__loc">Neiva, Huila · Colombia</p>
+      <ul class="hero__roles">
+        <li class="hero__role">Desarrollador</li>
+        <li class="hero__role">Fundador</li>
+        <li class="hero__role">Operador</li>
+      </ul>
+      <h1 class="display hero__name">Nicolás<br>Perdomo</h1>
+      <p class="hero__claim"><b>3 plataformas en producción</b>, una sola persona detrás.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Hablemos por WhatsApp</a>
+        <a class="btn btn--ghost" href="#casos">Ver los casos</a>
       </div>
     </div>
-  </section>
+    <div class="hero__portrait">
+      <img src="assets/img/nico.webp" alt="Retrato de Nicolás Perdomo" width="700" height="970" fetchpriority="high" loading="eager">
+    </div>
+  </div>
+</section>
 
-  <!-- ============ SIGNATURE: sistemas corriendo ============ -->
-  <div class="live">
-    <div class="live-inner">
-      <div class="live-label mono">En producción ahora</div>
-      <div class="live-item">
-        <div class="live-name"><i class="dot o"></i>GigantYa</div>
-        <div class="live-metric">15 negocios conectados</div>
-      </div>
-      <div class="live-item">
-        <div class="live-name"><i class="dot g"></i>Daemon Leads</div>
-        <div class="live-metric">WhatsApp Business API</div>
-      </div>
-      <div class="live-item">
-        <div class="live-name"><i class="dot y"></i>AgroValor</div>
-        <div class="live-metric">Precio del café en vivo</div>
+<!-- ===== CIFRAS ===== -->
+<section class="stats" aria-label="Cifras">
+  <div class="stats__inner" data-stats>
+    <div class="stat">
+      <p class="stat__num"><i class="dot dot--orange"></i><span data-count="15">15</span></p>
+      <p class="stat__label">negocios conectados en GigantYa</p>
+    </div>
+    <div class="stat">
+      <p class="stat__num"><i class="dot dot--green"></i><span data-count="4713">4.713</span></p>
+      <p class="stat__label">mensajes en una sola campaña</p>
+    </div>
+    <div class="stat">
+      <p class="stat__num"><i class="dot dot--gold"></i><span data-count="166">166</span></p>
+      <p class="stat__label">conversaciones respondidas</p>
+    </div>
+    <div class="stat">
+      <p class="stat__num"><i class="dot dot--blue"></i><span data-count="3">3</span></p>
+      <p class="stat__label">plataformas en producción</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HISTORIA ===== -->
+<section class="section" id="historia">
+  <div class="shell">
+    <p class="eyebrow mono">Historia</p>
+    <div class="story">
+      <div><h2 class="h2 display" style="margin-bottom:0">Aprendí<br>construyendo</h2></div>
+      <div>
+        <p>No aprendí esto en un aula. <strong>Leo documentación, rompo el servidor, lo arreglo y sigo.</strong> Todo lo que sé hacer salió de levantar cosas que tenían que funcionar el lunes.</p>
+        <p>Empecé GigantYa porque en Gigante nadie tenía los domicilios organizados y las apps grandes no bajan a municipios de ese tamaño. Nadie iba a construirlo, así que lo construí yo.</p>
+        <p>Para sacarlo adelante me tocó aprender de servidores, de pasarelas de pago, de políticas de Meta, de diseño de marca y de vender. Ninguna de esas cosas estaba en el plan; todas eran necesarias para que la plataforma existiera.</p>
+        <p>Hoy opero tres plataformas distintas. <strong>Cuando algo se cae a las once de la noche, el que lo levanta soy yo.</strong></p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ============ HABILIDADES ============ -->
-  <section id="habilidades">
-    <div class="shell">
-      <p class="eyebrow mono">Qué sé hacer</p>
-      <h2 class="h2 display">De la base de datos<br>hasta el logo</h2>
-      <p class="lead">No delego partes del proyecto porque no tengo a quién delegarle. Eso me obligó a aprender todo el recorrido, y hoy es la razón por la que puedo entregar algo funcionando sin coordinar a nadie.</p>
-
-      <div class="skills">
-        <div class="skill">
-          <h3>Backend y APIs</h3>
-          <p>La lógica que sostiene el producto</p>
-          <div class="tags">
-            <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Python</span>
-            <span class="tag">Flask</span><span class="tag">REST</span><span class="tag">Webhooks</span>
-          </div>
-        </div>
-        <div class="skill">
-          <h3>Bases de datos</h3>
-          <p>Modelado, consultas y migraciones</p>
-          <div class="tags">
-            <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Supabase</span>
-            <span class="tag">Modelado E-R</span>
-          </div>
-        </div>
-        <div class="skill">
-          <h3>Infraestructura</h3>
-          <p>Servidores propios, no solo despliegues</p>
-          <div class="tags">
-            <span class="tag">Linux</span><span class="tag">Ubuntu Server</span><span class="tag">nginx</span>
-            <span class="tag">VPS</span><span class="tag">Cloudflare</span><span class="tag">Netlify</span>
-          </div>
-        </div>
-        <div class="skill">
-          <h3>Frontend y PWA</h3>
-          <p>Apps que funcionan con mala señal</p>
-          <div class="tags">
-            <span class="tag">React</span><span class="tag">PWA</span><span class="tag">Three.js</span>
-            <span class="tag">Tailwind</span><span class="tag">HTML/CSS</span>
-          </div>
-        </div>
-        <div class="skill">
-          <h3>Integraciones</h3>
-          <p>Pagos y mensajería del mercado local</p>
-          <div class="tags">
-            <span class="tag">WhatsApp Cloud API</span><span class="tag">MercadoPago</span>
-            <span class="tag">Nequi</span><span class="tag">Meta Graph API</span><span class="tag">Google Places</span>
-          </div>
-        </div>
-        <div class="skill">
-          <h3>IA aplicada</h3>
-          <p>Agentes que hacen trabajo real, no demos</p>
-          <div class="tags">
-            <span class="tag">Claude API</span><span class="tag">Tool use</span><span class="tag">Agentes autónomos</span>
-            <span class="tag">Generación de contenido</span>
-          </div>
-        </div>
-        <div class="skill">
-          <h3>Producto y diseño</h3>
-          <p>Marca, interfaz y contenido</p>
-          <div class="tags">
-            <span class="tag">Identidad visual</span><span class="tag">UI</span><span class="tag">Figma</span>
-            <span class="tag">Video y redes</span>
-          </div>
-        </div>
-        <div class="skill">
-          <h3>Otros</h3>
-          <p>Lo que he tocado en proyectos y estudio</p>
-          <div class="tags">
-            <span class="tag">Java</span><span class="tag">C#</span><span class="tag">Unity</span>
-            <span class="tag">Git</span><span class="tag">Redes</span><span class="tag">Docker</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TRES CAMINOS ============ -->
-  <section id="trabajemos" style="border-top:1px solid var(--ink-3)">
-    <div class="shell">
-      <p class="eyebrow mono">Trabajemos</p>
-      <h2 class="h2 display">Tres formas de<br>que esto siga</h2>
-      <p class="lead">Cualquiera de las tres empieza igual: un mensaje por WhatsApp contándome qué necesitas.</p>
-
-      <div class="paths">
-        <div class="path">
-          <p class="num mono">Opción 01</p>
-          <h3>Necesitas software</h3>
-          <p>Tienes un negocio y un problema que se resuelve con una app, una plataforma o una automatización. Yo lo construyo completo y lo dejo funcionando.</p>
-        </div>
-        <div class="path">
-          <p class="num mono">Opción 02</p>
-          <h3>Buscas a alguien</h3>
-          <p>Tu equipo necesita un desarrollador que entienda el producto y no solo el ticket. Estoy abierto a trabajo remoto o presencial en Neiva.</p>
-        </div>
-        <div class="path">
-          <p class="num mono">Opción 03</p>
-          <h3>Quieres construir algo juntos</h3>
-          <p>Tienes una idea o un mercado y te falta la parte técnica. Me interesan las alianzas donde ambos ponemos algo real.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CODE REPAIR TECH ============ -->
-  <section class="crt">
-    <div class="shell">
-      <div class="crt-head">
-        <div>
-          <p class="eyebrow mono">Fundador</p>
-          <h2 class="h2 display">Code Repair Tech</h2>
-          <p class="lead">Es el estudio desde el que construyo. No es una agencia con equipo: soy yo, y esa es exactamente la propuesta. El que te cotiza es el que escribe el código, el que configura el servidor y el que te contesta cuando algo falla.</p>
-        </div>
-        <div>
-          <img class="crt-logo" src="img/crt-logo.png" alt="Code Repair Tech" style="margin-inline:auto">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROYECTOS ============ -->
-  <section id="proyectos" style="border-top:1px solid var(--ink-3);padding-top:clamp(70px,9vw,110px)">
-    <div class="shell">
-      <p class="eyebrow mono">Proyectos</p>
-      <h2 class="h2 display">Tres plataformas,<br>todas corriendo</h2>
-      <p class="lead">No son ejercicios ni prototipos. Tienen usuarios, servidores y facturas.</p>
-
-      <!-- GigantYa -->
-      <article class="project">
-        <div>
-          <div class="p-icon"><img src="img/gigantya-icon.png" alt=""></div>
-          <h3>GigantYa</h3>
-          <p class="p-role mono" style="color:var(--orange)">Producto propio · en operación</p>
-          <p>Plataforma de domicilios para Gigante, Huila, un municipio donde no llega ninguna app grande. Los restaurantes pagan una suscripción fija en vez de comisión por pedido, así que el cliente paga lo que vale la comida.</p>
-          <ul class="p-facts">
-            <li><span>Estado</span><span>En producción</span></li>
-            <li><span>Negocios</span><span>15 conectados</span></li>
-            <li><span>Stack</span><span>Node.js · MySQL · PWA · VPS Ubuntu</span></li>
-            <li><span>Pagos</span><span>Nequi · DaviPlata · Bre-B · contraentrega</span></li>
-          </ul>
-          <a class="p-link" href="https://gigantya.com" style="color:var(--orange)" target="_blank" rel="noopener">gigantya.com →</a>
-        </div>
-        <div class="shots">
-          <div class="shot"><img src="img/gigantya-web.jpg" alt="Listado de negocios en GigantYa"></div>
-          <div class="shot phone"><img src="img/gigantya-menu.jpg" alt="Menú de un restaurante en el celular"></div>
-        </div>
+<!-- ===== PILARES ===== -->
+<section class="section section--line">
+  <div class="shell">
+    <p class="eyebrow mono">Lo que hago hoy</p>
+    <h2 class="h2 display">Tres frentes,<br>el mismo oficio</h2>
+    <p class="lead">Construir, mantener corriendo, y poner eso al servicio de quien lo necesite.</p>
+    <div class="pillars" data-pillars>
+      <article class="pillar">
+        <p class="pillar__n">01</p>
+        <h3>Constructor de producto</h3>
+        <p>Levanto plataformas completas: modelo de datos, backend, interfaz, marca y despliegue. No entrego un prototipo, entrego algo que la gente usa.</p>
       </article>
-
-      <!-- Daemon Leads -->
-      <article class="project">
-        <div>
-          <div class="p-icon">
-            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="160" height="160" rx="34" fill="#0D1117"/>
-              <path d="M38 52 L66 80 L38 108" fill="none" stroke="#3DD68C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="78" y="92" width="46" height="16" rx="3" fill="#3DD68C"/>
-            </svg>
-          </div>
-          <h3>Daemon Leads</h3>
-          <p class="p-role mono" style="color:var(--green)">Producto propio · en operación</p>
-          <p>Encuentra negocios por zona y rubro, extrae sus datos de contacto y les escribe por WhatsApp desde la API oficial de Meta. Importa contactos, arma campañas y envía por lotes para no pasarse de los límites diarios.</p>
-          <ul class="p-facts">
-            <li><span>Estado</span><span>En producción</span></li>
-            <li><span>Stack</span><span>Python · Supabase · WhatsApp Cloud API</span></li>
-            <li><span>Datos</span><span>Google Places API</span></li>
-            <li><span>Cumplimiento</span><span>Plantillas y opt-in según política de Meta</span></li>
-          </ul>
-        </div>
-        <div class="shots">
-          <div class="shot"><img src="img/daemonleads-panel.jpg" alt="Panel de contactos y campañas de Daemon Leads"></div>
-        </div>
+      <article class="pillar">
+        <p class="pillar__n">02</p>
+        <h3>Operador de infraestructura</h3>
+        <p>VPS propios con Ubuntu, nginx, dominios, certificados y automatizaciones con cron. Los servidores donde corre todo esto los administro yo.</p>
       </article>
-
-      <!-- AgroValor -->
-      <article class="project">
-        <div>
-          <div class="p-icon"><img src="img/agrovalor-icon.png" alt=""></div>
-          <h3>AgroValor</h3>
-          <p class="p-role mono" style="color:var(--gold)">Producto propio · en operación</p>
-          <p>Le dice al caficultor cuánto le pagan hoy por su carga. Cruza el precio interno de referencia con el mercado internacional, proyecta los próximos días y avisa cuando el precio se mueve.</p>
-          <ul class="p-facts">
-            <li><span>Estado</span><span>En producción</span></li>
-            <li><span>Fuentes</span><span>Precio interno FNC · ICE Futures</span></li>
-            <li><span>Funciones</span><span>Mercado · calculadora · alertas · registro de ventas</span></li>
-            <li><span>Stack</span><span>Python · Supabase · web app</span></li>
-          </ul>
-        </div>
-        <div class="shots">
-          <div class="shot"><img src="img/agrovalor-panel.jpg" alt="Panel de precios del café en AgroValor"></div>
-        </div>
+      <article class="pillar">
+        <p class="pillar__n">03</p>
+        <h3>Prestador de servicio</h3>
+        <p>Campañas de WhatsApp y prospección de clientes para negocios, empresas y campañas electorales, usando la plataforma que ya construí.</p>
       </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ SOBRE MÍ ============ -->
-  <section class="about" id="sobre-mi">
-    <div class="shell">
-      <p class="eyebrow mono">Sobre mí</p>
-      <div class="about-grid">
-        <div>
-          <h2 class="h2 display" style="margin-bottom:0">Aprendí<br>construyendo</h2>
+<!-- ===== CASOS ===== -->
+<section class="section section--line" id="casos">
+  <div class="shell">
+    <p class="eyebrow mono">Casos</p>
+    <h2 class="h2 display">Problemas reales,<br>software que los resuelve</h2>
+    <p class="lead">Cada uno nació de un problema concreto de alguien. Hoy tienen usuarios, servidor y facturas.</p>
+
+    <article class="case">
+      <div>
+        <div class="case__icon"><img src="assets/img/gigantya-icon.webp" alt="" loading="lazy" decoding="async" width="256" height="256"></div>
+        <h3>GigantYa</h3>
+        <p class="case__state mono" style="color:var(--orange)">Producto propio · en operación</p>
+        <div class="case__block">
+          <h4>El problema</h4>
+          <p>Ninguna app de domicilios llega a un municipio del tamaño de Gigante. Los restaurantes recibían pedidos por WhatsApp, los anotaban en papel y perdían la mitad entre el ruido de la cocina.</p>
         </div>
-        <div>
-          <p>Casi todo lo que sé hacer lo aprendí levantando cosas que tenían que funcionar el lunes. Leo documentación, rompo el servidor, lo arreglo y sigo.</p>
-          <p>Empecé GigantYa porque en Gigante nadie tenía domicilios organizados y las apps grandes no bajan a municipios de ese tamaño. Para sacarlo adelante me tocó aprender de servidores, de pagos, de políticas de Meta, de diseño y de vender.</p>
-          <p>Trabajo solo. Eso significa que a veces voy más lento que un equipo, pero también que <strong>nada se pierde entre departamentos</strong> y que quien recibe tu mensaje es quien puede resolverlo.</p>
-          <p>Me interesa el software que resuelve problemas de gente concreta en lugares que normalmente se saltan.</p>
+        <div class="case__block">
+          <h4>La decisión</h4>
+          <p>Suscripción fija en vez de comisión por pedido. Las apps grandes cobran entre 15% y 25% al restaurante y eso termina en el precio del cliente. Con suscripción, lo que ves en la app vale lo mismo que en el local. Eso fue lo que convenció a los primeros negocios de entrar.</p>
         </div>
+        <div class="case__result" style="border-color:var(--orange)">
+          <strong style="color:var(--orange)">15 negocios conectados</strong>
+          <span>Restaurantes, licores y mercado · pedidos entregados en producción</span>
+        </div>
+        <ul class="case__stack">
+          <li class="tag">Node.js</li><li class="tag">MySQL</li><li class="tag">PWA</li>
+          <li class="tag">VPS Ubuntu</li><li class="tag">nginx</li><li class="tag">MercadoPago</li>
+        </ul>
+        <a class="case__link" style="color:var(--orange)" href="https://gigantya.com" target="_blank" rel="noopener">gigantya.com <span aria-hidden="true">→</span></a>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACTO ============ -->
-  <section class="contact" id="contacto">
-    <div class="shell">
-      <h2 class="display">Cuéntame qué<br>necesitas</h2>
-      <p class="lead">Escríbeme por WhatsApp y te digo de una si te puedo ayudar, cuánto tomaría y cuánto costaría. Sin formularios ni reuniones de descubrimiento.</p>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Escribir por WhatsApp</a>
-        <a class="btn btn-ghost" href="mailto:coderepairtech@gmail.com">Enviar un correo</a>
+      <div class="case__shots">
+        <figure class="shot"><img src="assets/img/gigantya-web.webp" alt="Listado de negocios en GigantYa" loading="lazy" decoding="async" width="1180" height="613"></figure>
+        <figure class="shot shot--phone"><img src="assets/img/gigantya-menu.webp" alt="Menú de un restaurante visto en el celular" loading="lazy" decoding="async" width="640" height="1180"></figure>
       </div>
-    </div>
-  </section>
+    </article>
 
+    <article class="case">
+      <div>
+        <div class="case__icon">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Daemon Leads">
+            <rect width="160" height="160" rx="34" fill="#0D1117"/>
+            <path d="M38 52 L66 80 L38 108" fill="none" stroke="#3DD68C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="78" y="92" width="46" height="16" rx="3" fill="#3DD68C"/>
+          </svg>
+        </div>
+        <h3>Daemon Leads</h3>
+        <p class="case__state mono" style="color:var(--green)">Producto propio · servicio activo</p>
+        <div class="case__block">
+          <h4>El problema</h4>
+          <p>Contactar clientes en la región significa escribir por WhatsApp uno por uno. Un negocio que quiere llegar a 500 prospectos necesita dos días completos de una persona, y casi siempre abandona a la mitad.</p>
+        </div>
+        <div class="case__block">
+          <h4>La decisión</h4>
+          <p>Usar la API oficial de WhatsApp Business en vez de automatizar el WhatsApp normal. Es más difícil de montar y exige plantillas aprobadas por Meta, pero es la única forma de que la cuenta no termine bloqueada. Los envíos salen por lotes para respetar los límites diarios de conversaciones.</p>
+        </div>
+        <div class="case__result" style="border-color:var(--green)">
+          <strong style="color:var(--green)">4.713 mensajes en una campaña</strong>
+          <span>166 conversaciones con respuesta · 111 leads encontrados vía Google Places</span>
+        </div>
+        <ul class="case__stack">
+          <li class="tag">Python</li><li class="tag">Supabase</li>
+          <li class="tag">WhatsApp Cloud API</li><li class="tag">Google Places</li><li class="tag">Webhooks</li>
+        </ul>
+      </div>
+      <div class="case__shots">
+        <figure class="shot"><img src="assets/img/daemonleads-panel.webp" alt="Panel de contactos y campañas de Daemon Leads" loading="lazy" decoding="async" width="1180" height="614"></figure>
+      </div>
+    </article>
+
+    <article class="case">
+      <div>
+        <div class="case__icon"><img src="assets/img/agrovalor-icon.webp" alt="" loading="lazy" decoding="async" width="256" height="256"></div>
+        <h3>AgroValor</h3>
+        <p class="case__state mono" style="color:var(--gold)">Producto propio · en operación</p>
+        <div class="case__block">
+          <h4>El problema</h4>
+          <p>El caficultor vende su carga sin saber si el precio que le ofrecen es justo. El precio interno lo publica la FNC, el internacional se mueve en ICE Futures, y nadie cruza los dos en un lugar que se entienda.</p>
+        </div>
+        <div class="case__block">
+          <h4>La decisión</h4>
+          <p>Mostrar primero lo único que importa: cuánto le pagan hoy por carga de 125 kg. El mercado internacional, la paridad de exportación y la proyección quedan debajo, para quien quiera profundizar. La proyección se marca explícitamente como estimación y no como garantía de compra.</p>
+        </div>
+        <div class="case__result" style="border-color:var(--gold)">
+          <strong style="color:var(--gold)">Precio en vivo, todos los días</strong>
+          <span>Precio interno FNC + ICE Futures · calculadora, alertas y registro de ventas</span>
+        </div>
+        <ul class="case__stack">
+          <li class="tag">Python</li><li class="tag">Supabase</li>
+          <li class="tag">Series temporales</li><li class="tag">Web app</li>
+        </ul>
+      </div>
+      <div class="case__shots">
+        <figure class="shot"><img src="assets/img/agrovalor-panel.webp" alt="Panel de precios del café en AgroValor" loading="lazy" decoding="async" width="1180" height="620"></figure>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== TRAYECTO ===== -->
+<section class="section section--line" id="trayecto">
+  <div class="shell">
+    <p class="eyebrow mono">Trayecto</p>
+    <h2 class="h2 display">Cómo llegué<br>hasta acá</h2>
+    <ol class="timeline" data-timeline>
+      <li class="milestone">
+        <p class="milestone__when">Primer hito</p>
+        <h3>Primera plataforma en producción</h3>
+        <p>Salir del entorno local y montar todo en un servidor propio: Ubuntu, nginx, dominio y certificado. La primera vez que algo que escribí quedó accesible desde cualquier celular del país.</p>
+      </li>
+      <li class="milestone">
+        <p class="milestone__when">GigantYa</p>
+        <h3>Negocios pagando suscripción</h3>
+        <p>El paso de proyecto a operación: 15 comercios de Gigante conectados, con menús cargados, pedidos entrando y pagos por Nequi, DaviPlata, Bre-B y contraentrega.</p>
+      </li>
+      <li class="milestone">
+        <p class="milestone__when">Daemon Leads</p>
+        <h3>Primera campaña masiva</h3>
+        <p>Más de 4.000 mensajes entregados en un solo envío por la API oficial de Meta, con 166 conversaciones que respondieron. Ahí Daemon Leads dejó de ser herramienta interna y pasó a ser servicio.</p>
+      </li>
+      <li class="milestone">
+        <p class="milestone__when">AgroValor</p>
+        <h3>El café, en tiempo real</h3>
+        <p>Conectar el precio interno de la FNC con el mercado internacional de ICE Futures y ponerlo en una pantalla que un caficultor entienda en tres segundos.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== ALIADOS ===== -->
+<section class="allies" aria-label="Negocios conectados a GigantYa">
+  <div class="allies__track" data-allies>
+    <span>Ceiba Coffee</span><span>Amapola Hamburguesería</span><span>Café del Pará</span>
+    <span>Pare Tantico</span><span>Mandarín Gourmet</span><span>FlyingPig Burrito</span>
+    <span>BiProtein</span><span>Las Delicias del Gordo</span><span>Supermercado Kairos</span>
+    <span>Estanco de Licores Lalo</span><span>Distri Gigante's</span>
+    <span aria-hidden="true">Ceiba Coffee</span><span aria-hidden="true">Amapola Hamburguesería</span>
+    <span aria-hidden="true">Café del Pará</span><span aria-hidden="true">Pare Tantico</span>
+    <span aria-hidden="true">Mandarín Gourmet</span><span aria-hidden="true">FlyingPig Burrito</span>
+    <span aria-hidden="true">BiProtein</span><span aria-hidden="true">Las Delicias del Gordo</span>
+    <span aria-hidden="true">Supermercado Kairos</span><span aria-hidden="true">Estanco de Licores Lalo</span>
+    <span aria-hidden="true">Distri Gigante's</span>
+  </div>
+</section>
+
+<!-- ===== PRODUCTO EN MOVIMIENTO ===== -->
+<section class="section">
+  <div class="shell">
+    <p class="eyebrow mono">Producto en movimiento</p>
+    <h2 class="h2 display">Así se ve<br>funcionando</h2>
+    <p class="lead">No son maquetas. Son las plataformas corriendo, grabadas tal cual las usa la gente.</p>
+    <div class="reels">
+      <figure>
+        <div class="reel">
+          <video src="assets/img/gigantya-clip.mp4" muted loop playsinline preload="metadata"
+                 poster="assets/img/gigantya-menu.webp" aria-label="GigantYa en uso desde el celular"></video>
+        </div>
+        <figcaption class="reel__cap">GigantYa · pedir desde el celular</figcaption>
+      </figure>
+      <figure>
+        <div class="reel">
+          <img class="reel__scroll" src="assets/img/gigantya-pago.webp" alt="Métodos de pago disponibles en GigantYa" loading="lazy" decoding="async" width="640" height="1180">
+        </div>
+        <figcaption class="reel__cap">GigantYa · Nequi, DaviPlata, Bre-B y efectivo</figcaption>
+      </figure>
+      <figure>
+        <div class="reel">
+          <img class="reel__scroll" src="assets/img/daemon-historial.webp" alt="Historial de campañas completadas en Daemon Leads" loading="lazy" decoding="async" width="1180" height="876">
+        </div>
+        <figcaption class="reel__cap">Daemon Leads · campañas completadas</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MANIFIESTO ===== -->
+<section class="section section--line manifesto">
+  <div class="shell">
+    <p class="eyebrow mono">Manifiesto</p>
+    <blockquote class="display">El que cotiza es el que <em>escribe el código</em>.</blockquote>
+    <p>No hay capa de ventas entre vos y quien resuelve. Si te digo que algo se puede hacer en dos semanas, es porque lo voy a hacer yo en dos semanas.</p>
+    <p>Trabajo para que los municipios y los negocios pequeños que las plataformas grandes se saltan tengan software hecho para ellos, y no una versión recortada de algo pensado para otra ciudad.</p>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="section section--line" id="servicios">
+  <div class="shell">
+    <p class="eyebrow mono">Servicios</p>
+    <h2 class="h2 display">Qué puedes<br>contratar</h2>
+    <p class="lead">Precio visible donde lo hay. Sin reuniones de descubrimiento para llegar a una cifra.</p>
+    <div class="services" data-services>
+      <article class="service">
+        <h3>Software a la medida</h3>
+        <p>Plataformas web, PWA, paneles de administración e integraciones. Desde el modelo de datos hasta el servidor funcionando y el dominio apuntando.</p>
+        <p class="service__price">Cotización por proyecto</p>
+      </article>
+      <article class="service">
+        <h3>Campañas de WhatsApp</h3>
+        <p>Tú das la lista y el mensaje, yo hago el envío con Daemon Leads desde la API oficial de Meta. Para negocios, empresas y campañas electorales.</p>
+        <p class="service__price">$50 por texto · $100 con imagen o video</p>
+      </article>
+      <article class="service">
+        <h3>Prospección de clientes</h3>
+        <p>Búsqueda de negocios por rubro y ciudad, con teléfono verificado y enlace de WhatsApp listo. Te entrego la base para que la trabajes.</p>
+        <p class="service__price">Según volumen y zona</p>
+      </article>
+      <article class="service">
+        <h3>Infraestructura y despliegue</h3>
+        <p>Montaje de VPS, nginx, dominios, certificados SSL y automatizaciones con cron. También rescato proyectos que quedaron a medias.</p>
+        <p class="service__price">Por hora o por proyecto</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="section section--line contact" id="contacto">
+  <div class="shell">
+    <p class="eyebrow mono">Contacto</p>
+    <h2 class="h2 display">Escribe según<br>lo que necesites</h2>
+    <p class="lead">Te respondo diciendo si te puedo ayudar, cuánto tomaría y cuánto costaría.</p>
+
+    <div class="contact__grid" data-contact>
+      <article class="ccard">
+        <h3>Un proyecto</h3>
+        <p>Necesitas que construya algo: una plataforma, una app, una integración.</p>
+        <a href="mailto:coderepairtech@gmail.com?subject=Proyecto%20—%20desde%20el%20portafolio">coderepairtech@gmail.com</a>
+      </article>
+      <article class="ccard">
+        <h3>Negocios y alianzas</h3>
+        <p>Propuestas de trabajo, sociedades o construir algo juntos.</p>
+        <a href="mailto:coderepairtech@gmail.com?subject=Negocios%20—%20desde%20el%20portafolio">coderepairtech@gmail.com</a>
+      </article>
+      <article class="ccard">
+        <h3>Todo lo demás</h3>
+        <p>Preguntas, prensa, o simplemente saludar.</p>
+        <a href="mailto:coderepairtech@gmail.com?subject=Hola%20—%20desde%20el%20portafolio">coderepairtech@gmail.com</a>
+      </article>
+    </div>
+
+    <div class="wa">
+      <h3>¿Prefieres WhatsApp?</h3>
+      <p>Es por donde respondo más rápido.</p>
+      <a class="btn btn--primary" href="https://wa.me/573219429385?text=Hola%20Nicol%C3%A1s%2C%20vi%20tu%20portafolio%20y%20quiero%20contarte%20lo%20que%20necesito.">Escribir al 321 942 9385</a>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer>
-  <div class="foot">
+<footer class="footer">
+  <div class="footer__inner">
     <span class="mono">Code Repair Tech · Neiva, Huila</span>
-    <span class="mono">coderepairtech.site</span>
+    <a class="mono" href="#top">Volver arriba</a>
   </div>
 </footer>
 
-<script>
-(function(){
-  var els=document.querySelectorAll('section > .shell, .live-inner, .project');
-  els.forEach(function(el){el.classList.add('reveal')});
-  if(!('IntersectionObserver' in window)){
-    els.forEach(function(el){el.classList.add('in')});return;
-  }
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
-    });
-  },{rootMargin:'0px 0px -12% 0px',threshold:.08});
-  els.forEach(function(el){io.observe(el)});
-  document.querySelector('.hero .shell').classList.add('in');
-})();
-(function(){
-  var body=document.body,t=document.querySelector('.nav-toggle');
-  if(!t)return;
-  function set(open){
-    body.classList.toggle('nav-open',open);
-    t.setAttribute('aria-expanded',open?'true':'false');
-    t.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
-  }
-  t.addEventListener('click',function(){set(!body.classList.contains('nav-open'))});
-  document.querySelectorAll('.nav-links a').forEach(function(a){
-    a.addEventListener('click',function(){set(false)});
-  });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
-  window.addEventListener('resize',function(){if(window.innerWidth>860)set(false)});
-})();
-</script>
+<script defer src="lib/gsap.min.js"></script>
+<script defer src="lib/ScrollTrigger.min.js"></script>
+<script defer src="lib/manifest.js"></script>
+<script defer src="main.js?v=20260901"></script>
 </body>
 </html>

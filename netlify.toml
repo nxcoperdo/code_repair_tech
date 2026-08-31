@@ -1,12 +1,14 @@
-# Netlify configuration — sitio estático (index.html + carpeta img/)
+# Netlify configuration — sitio estático multi-archivo
+# (index.html + styles.css + main.js + lib/ + assets/)
 # Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  # El sitio es estático (index.html + img/). Este "build" no compila nada:
-  # solo copia los archivos a dist/, que es el directorio de publicación.
-  # Se hace así porque el panel de Netlify quedó apuntando a "dist" de la
-  # configuración anterior; generándolo, funciona con cualquier ajuste.
-  command = "rm -rf dist && mkdir dist && cp index.html 404.html robots.txt dist/ && cp -r img dist/"
+  # El sitio es estático: no compila nada. Este "build" solo copia los
+  # archivos a dist/, que es el directorio de publicación (el panel de
+  # Netlify quedó apuntando a "dist"; generándolo funciona igual).
+  # Se dejan fuera index_8.html (respaldo de un solo archivo), LEEME.md y
+  # .htaccess (solo sirve en Apache/Hostinger).
+  command = "rm -rf dist && mkdir dist && cp index.html styles.css main.js 404.html robots.txt dist/ && cp -r assets lib dist/"
   publish = "dist"
 
 # Headers de seguridad para todos los archivos
@@ -24,8 +26,9 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Imágenes: cache largo (el navegador las reutiliza entre visitas)
+# Imágenes, video y fuentes: cache largo (el navegador los reutiliza).
+# styles.css y main.js llevan ?v=AAAAMMDD en el HTML para romper caché.
 [[headers]]
-  for = "/img/*"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
